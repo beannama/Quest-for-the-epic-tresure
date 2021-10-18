@@ -14,6 +14,9 @@ public class Player_Controller : MonoBehaviour
     public float Speed = 2f;
     public bool  grounded;
     public float jumpPower = 6.5f;
+    public float Timer, Timer2;
+    public float rechargeTime = 5f;
+    public float attackRechargeTime = 2f;
 
     void Start()
     {
@@ -30,24 +33,32 @@ public class Player_Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            Debug.Log("is pressed");
-            if (isMage)
-            {
-                isMage = false;
-            }
-            else
-            {
-                isMage = true;
-            }
+            if (Timer <= 0){
+                Debug.Log("is pressed");
+                if (isMage)
+                {
+                    isMage = false;
+                }
+                else
+                {
+                    isMage = true;
+                }
 
-            checkIsMage(isMage);
+                checkIsMage(isMage);
+                Timer = rechargeTime;
+            }
         }
 
         if (Input.GetButtonDown("Fire1"))
         {
-            createAttack();
-            destroyAttack();
+            if (Timer2 <= 0){
+                createAttack();
+                destroyAttack();
+                Timer2 = attackRechargeTime;
+            }
         }
+        Timer -= Time.deltaTime;
+        Timer2 -= Time.deltaTime;
     }
 
     void FixedUpdate(){
