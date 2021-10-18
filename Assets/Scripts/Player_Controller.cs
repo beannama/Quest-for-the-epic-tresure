@@ -80,10 +80,11 @@ public class Player_Controller : MonoBehaviour
 
         if(horizontalMov > 0.1f){
             transform.localScale = new Vector3(1f,1f,1f);
+            CheckLook(StateLooking.Right);
         }
         if (horizontalMov < -0.1f){
-
             transform.localScale = new Vector3(-1f,1f,1f);
+            CheckLook(StateLooking.Left);
         }
 
         if (jump){
@@ -126,19 +127,24 @@ public class Player_Controller : MonoBehaviour
 
     void CreateAttack()
     {
+        Vector2 parentPosition;
+        if (lookingState == StateLooking.Left)
+        {
+            parentPosition = new Vector2(transform.position.x - 1.5f, transform.position.y - 0.5f);
+            GameObject childObject = Instantiate(attackObject, parentPosition, Quaternion.identity);
 
-        
-        Vector2 parentPosition = new Vector2(transform.position.x + 1.5f, transform.position.y - 0.5f);
-        Debug.Log("attack!");
-        GameObject childObject = Instantiate(attackObject, parentPosition, Quaternion.identity);
-        if (horizontalMov > 0.1f)
-        {
-            childObject.transform.localScale = new Vector3(1f, 1f, 1f);
-        }
-        if (horizontalMov < -0.1f)
-        {
             childObject.transform.localScale = new Vector3(-1f, 1f, 1f);
         }
+        if (lookingState == StateLooking.Right)
+        {
+            parentPosition = new Vector2(transform.position.x + 1.5f, transform.position.y - 0.5f);
+            GameObject childObject = Instantiate(attackObject, parentPosition, Quaternion.identity);
+
+            childObject.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+
+        Debug.Log("attack!");
+        
         //childObject.transform.parent = transform;
     }
 
