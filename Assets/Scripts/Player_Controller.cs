@@ -15,7 +15,13 @@ public class Player_Controller : MonoBehaviour
 
     private Rigidbody2D rb2d;
     private bool jump;
-    private bool isMage;
+
+    public enum StateCharacter
+    {
+        Dragon,
+        Mage
+    }
+    private StateCharacter characterState;
     
     public float maxSpeed = 5f;
     public float Speed = 2f;
@@ -29,7 +35,7 @@ public class Player_Controller : MonoBehaviour
 
     void Start()
     {
-        isMage = false;
+        characterState = StateCharacter.Dragon;
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -41,18 +47,9 @@ public class Player_Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (Timer <= 0){
-                Debug.Log("is pressed");
-                if (isMage)
-                {
-                    isMage = false;
-                }
-                else
-                {
-                    isMage = true;
-                }
-
-                CheckIsMage(isMage);
+            if (Timer <= 0)
+            {
+                ChangeCharacterState();
                 Timer = rechargeTime;
             }
         }
@@ -75,7 +72,6 @@ public class Player_Controller : MonoBehaviour
 
         float limiteSpeed = Mathf.Clamp(rb2d.velocity.x, -maxSpeed, maxSpeed);
         rb2d.velocity = new Vector2(limiteSpeed, rb2d.velocity.y);
-        
 
 
         if(horizontalMov > 0.1f){
@@ -107,20 +103,22 @@ public class Player_Controller : MonoBehaviour
     }
 
 
-    void CheckIsMage(bool isMage)
+    void ChangeCharacterState()
     {
         GameObject dragonGameObject = transform.Find("Dragon").gameObject;
         GameObject mageGameObject = transform.Find("Mage").gameObject;
 
-        if (isMage)
+        if(characterState == StateCharacter.Dragon)
         {
             dragonGameObject.SetActive(false);
             mageGameObject.SetActive(true);
+            characterState = StateCharacter.Mage;
         }
-        else 
+        else if (characterState == StateCharacter.Mage)
         {
             dragonGameObject.SetActive(true);
             mageGameObject.SetActive(false);
+            characterState = StateCharacter.Dragon;
 
         }
     }
@@ -142,10 +140,6 @@ public class Player_Controller : MonoBehaviour
 
             childObject.transform.localScale = new Vector3(1f, 1f, 1f);
         }
-
-        Debug.Log("attack!");
-        
-        //childObject.transform.parent = transform;
     }
 
     void DestroyAttack()
