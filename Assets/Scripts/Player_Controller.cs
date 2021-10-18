@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
+    public GameObject attackObject;
+
     private Rigidbody2D rb2d;
     private bool jump;
     private bool isMage;
@@ -22,7 +24,7 @@ public class Player_Controller : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetAxis("Vertical") > 0 && grounded) {
+        if (Input.GetButtonDown("Jump") && grounded) {
             jump = true;
         }
 
@@ -41,7 +43,11 @@ public class Player_Controller : MonoBehaviour
             checkIsMage(isMage);
         }
 
-
+        if (Input.GetButtonDown("Fire1"))
+        {
+            createAttack();
+            destroyAttack();
+        }
     }
 
     void FixedUpdate(){
@@ -81,5 +87,19 @@ public class Player_Controller : MonoBehaviour
             mageGameObject.SetActive(false);
 
         }
+    }
+
+    void createAttack()
+    {
+        Vector2 parentPosition = new Vector2(transform.position.x + 1.5f, transform.position.y - 0.5f);
+        Debug.Log("attack!");
+        GameObject childObject = Instantiate(attackObject, parentPosition, Quaternion.identity);
+        //childObject.transform.parent = transform;
+    }
+
+    void destroyAttack()
+    {
+        GameObject attackCreated = GameObject.Find("Attack(Clone)");
+        Destroy(attackCreated, 0.5f);
     }
 }
