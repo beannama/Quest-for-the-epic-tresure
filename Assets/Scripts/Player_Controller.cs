@@ -5,8 +5,8 @@ using UnityEngine;
 public class Player_Controller : MonoBehaviour
 {
     private Rigidbody2D rb2d;
-    private Animator anim;
     private bool jump;
+    private bool isMage;
     
     public float maxSpeed = 5f;
     public float Speed = 2f;
@@ -15,18 +15,33 @@ public class Player_Controller : MonoBehaviour
 
     void Start()
     {
+        isMage = false;
         rb2d = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>(); 
     }
 
     void Update()
     {
-        anim.SetFloat("Speed", Mathf.Abs(rb2d.velocity.x));
-        anim.SetBool("Grounded", grounded);
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && grounded){
+        if (Input.GetAxis("Vertical") > 0 && grounded) {
             jump = true;
         }
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            Debug.Log("is pressed");
+            if (isMage)
+            {
+                isMage = false;
+            }
+            else
+            {
+                isMage = true;
+            }
+
+            checkIsMage(isMage);
+        }
+
+
     }
 
     void FixedUpdate(){
@@ -48,5 +63,23 @@ public class Player_Controller : MonoBehaviour
             jump = false;
         }
 
+    }
+
+    void checkIsMage(bool isMage)
+    {
+        GameObject dragonGameObject = transform.Find("Dragon").gameObject;
+        GameObject mageGameObject = transform.Find("Mage").gameObject;
+
+        if (isMage)
+        {
+            dragonGameObject.SetActive(false);
+            mageGameObject.SetActive(true);
+        }
+        else 
+        {
+            dragonGameObject.SetActive(true);
+            mageGameObject.SetActive(false);
+
+        }
     }
 }

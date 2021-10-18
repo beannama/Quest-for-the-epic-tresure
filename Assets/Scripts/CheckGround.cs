@@ -8,12 +8,15 @@ public class CheckGround : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GetComponentInParent<Player_Controller>();
+        player = GetComponent<Player_Controller>();
         
     }
 
     void OnCollisionStay2D(Collision2D col){
-        player.grounded = true;
+        if(col.gameObject.CompareTag("Land"))
+        {
+            player.grounded = true;
+        }
     }
 
     void OnCollisionExit2D(Collision2D col){
