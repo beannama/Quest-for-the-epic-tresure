@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
+    public enum StateLooking
+    {
+        Left,
+        Right
+    }
+    private StateLooking lookingState;
+
     public GameObject attackObject;
 
     private Rigidbody2D rb2d;
@@ -17,6 +24,8 @@ public class Player_Controller : MonoBehaviour
     public float Timer, Timer2;
     public float rechargeTime = 5f;
     public float attackRechargeTime = 2f;
+    public float horizontalMov;
+    
 
     void Start()
     {
@@ -26,7 +35,6 @@ public class Player_Controller : MonoBehaviour
 
     void Update()
     {
-
         if (Input.GetButtonDown("Jump") && grounded) {
             jump = true;
         }
@@ -44,7 +52,7 @@ public class Player_Controller : MonoBehaviour
                     isMage = true;
                 }
 
-                checkIsMage(isMage);
+                CheckIsMage(isMage);
                 Timer = rechargeTime;
             }
         }
@@ -52,8 +60,8 @@ public class Player_Controller : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             if (Timer2 <= 0){
-                createAttack();
-                destroyAttack();
+                CreateAttack();
+                DestroyAttack();
                 Timer2 = attackRechargeTime;
             }
         }
@@ -62,16 +70,19 @@ public class Player_Controller : MonoBehaviour
     }
 
     void FixedUpdate(){
-        float h = Input.GetAxis("Horizontal");
-        rb2d.AddForce(Vector2.right * Speed * h);
+        horizontalMov = Input.GetAxis("Horizontal");
+        rb2d.AddForce(Vector2.right * Speed * horizontalMov);
 
         float limiteSpeed = Mathf.Clamp(rb2d.velocity.x, -maxSpeed, maxSpeed);
         rb2d.velocity = new Vector2(limiteSpeed, rb2d.velocity.y);
+        
 
-        if(h > 0.1f){
+
+        if(horizontalMov > 0.1f){
             transform.localScale = new Vector3(1f,1f,1f);
         }
-        if (h < -0.1f){
+        if (horizontalMov < -0.1f){
+
             transform.localScale = new Vector3(-1f,1f,1f);
         }
 
@@ -81,8 +92,21 @@ public class Player_Controller : MonoBehaviour
         }
 
     }
+    void CheckLook(StateLooking stateLooking)
+    {
+        switch (stateLooking)
+        {
+            case StateLooking.Left:
+                lookingState = StateLooking.Left;
+                break;
+            case StateLooking.Right:
+                lookingState = StateLooking.Right;
+                break;
+        }
+    }
 
-    void checkIsMage(bool isMage)
+
+    void CheckIsMage(bool isMage)
     {
         GameObject dragonGameObject = transform.Find("Dragon").gameObject;
         GameObject mageGameObject = transform.Find("Mage").gameObject;
@@ -100,15 +124,25 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
-    void createAttack()
+    void CreateAttack()
     {
+
+        
         Vector2 parentPosition = new Vector2(transform.position.x + 1.5f, transform.position.y - 0.5f);
         Debug.Log("attack!");
         GameObject childObject = Instantiate(attackObject, parentPosition, Quaternion.identity);
+        if (horizontalMov > 0.1f)
+        {
+            childObject.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        if (horizontalMov < -0.1f)
+        {
+            childObject.transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
         //childObject.transform.parent = transform;
     }
 
-    void destroyAttack()
+    void DestroyAttack()
     {
         GameObject attackCreated = GameObject.Find("Attack(Clone)");
         Destroy(attackCreated, 0.5f);
