@@ -8,6 +8,7 @@ public class PlayerRespawn : MonoBehaviour
     public GameObject[] hearts;
     private int life;
 
+    
     void Start()
     {
         life = hearts.Length;
@@ -33,7 +34,8 @@ public class PlayerRespawn : MonoBehaviour
         CheckLife();
     }
 
-    public void PlayerKillOnTrap(){
+    public void KillPlayer()
+    {
         life = 0;
         CheckLife();
     }
