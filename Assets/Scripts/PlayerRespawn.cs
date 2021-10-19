@@ -32,4 +32,9 @@ public class PlayerRespawn : MonoBehaviour
         life--;
         CheckLife();
     }
+
+    public void PlayerKillOnTrap(){
+        life = 0;
+        CheckLife();
+    }
 }

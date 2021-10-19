@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Traps_Controller : MonoBehaviour
 {
+    public GameObject playerObject;
+    public PlayerRespawn prspwn;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerObject = GameObject.Find("Player");
+        prspwn =  playerObject.GetComponent<PlayerRespawn>();
     }
 
     // Update is called once per frame
@@ -20,6 +23,7 @@ public class Traps_Controller : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             Debug.Log("Trap triggered!!");
+            prspwn.PlayerKillOnTrap();
         }
     }
 }
