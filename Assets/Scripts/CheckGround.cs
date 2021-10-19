@@ -5,6 +5,7 @@ using UnityEngine;
 public class CheckGround : MonoBehaviour
 {
     private Player_Controller player;
+    private Rigidbody2D rb2d;
 
     public GameObject playerObject;
 
@@ -16,6 +17,15 @@ public class CheckGround : MonoBehaviour
 
         playerObject = GameObject.Find("Player");
         prspwn = playerObject.GetComponent<PlayerRespawn>();
+        rb2d = GetComponentInParent<Rigidbody2D>();
+    }
+
+    void OnCollisionEnter2D(Collision2D col){
+        if(col.gameObject.CompareTag("Platform")){
+            rb2d.velocity = new Vector3(0f,0f,0f);
+            player.transform.parent = col.transform;
+            player.grounded = true;
+        }
     }
 
     void OnCollisionStay2D(Collision2D col)
@@ -27,6 +37,10 @@ public class CheckGround : MonoBehaviour
         if (col.gameObject.CompareTag("Traps"))
         {
             player.isOnTrap = true;
+        }
+        if(col.gameObject.CompareTag("Platform")){
+            player.transform.parent = col.transform;
+            player.grounded = true;
         }
 
         Vector3 direction = col.gameObject.transform.position;
@@ -43,8 +57,14 @@ public class CheckGround : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D col)
     {
-        player.grounded = false;
         player.isOnTrap = false;
+        if(col.gameObject.CompareTag("Land")){
+            player.grounded = false;
+        }
+        if(col.gameObject.CompareTag("Platform")){
+            player.transform.parent = null;
+            player.grounded = false;
+        }
 
     }
 

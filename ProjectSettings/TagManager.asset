@@ -9,6 +9,7 @@ TagManager:
   - Attack
   - Traps
   - Door
+  - Platform
   layers:
   - Default
   - TransparentFX
