@@ -13,7 +13,9 @@ public class Player_Controller : MonoBehaviour
 
     public GameObject attackObject;
 
-    private Rigidbody2D rb2d;
+    public Rigidbody2D rb2d;
+
+    private SpriteRenderer spriteR;
     private bool jump;
 
     public enum StateCharacter
@@ -39,10 +41,12 @@ public class Player_Controller : MonoBehaviour
         lookingState = StateLooking.Right;
         characterState = StateCharacter.Dragon;
         rb2d = GetComponent<Rigidbody2D>();
+
     }
 
     void Update()
     {
+
         if (Input.GetButtonDown("Jump") && grounded) {
             jump = true;
         }
@@ -64,8 +68,10 @@ public class Player_Controller : MonoBehaviour
                 attackTimer = attackRechargeTime;
             }
         }
+
         changeChrTimer -= Time.deltaTime;
         attackTimer -= Time.deltaTime;
+
     }
 
     void FixedUpdate(){
