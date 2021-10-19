@@ -91,6 +91,9 @@ public class Player_Controller : MonoBehaviour
         }
 
     }
+
+
+
     void CheckLook(StateLooking stateLooking)
     {
         switch (stateLooking)
@@ -103,7 +106,6 @@ public class Player_Controller : MonoBehaviour
                 break;
         }
     }
-
 
     void ChangeCharacterState()
     {
