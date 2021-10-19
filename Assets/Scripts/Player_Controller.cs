@@ -36,6 +36,7 @@ public class Player_Controller : MonoBehaviour
 
     void Start()
     {
+        lookingState = StateLooking.Right;
         characterState = StateCharacter.Dragon;
         rb2d = GetComponent<Rigidbody2D>();
     }

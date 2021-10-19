@@ -122,3 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d69b64958f5acb840b5f0ca53582e613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerObject: {fileID: 0}
+  spriteArray:
+  - {fileID: 21300000, guid: c83ea65f0147b1c409025607eab75b29, type: 3}
+  - {fileID: 21300000, guid: e0b16a377f17da741be514a884ceeca3, type: 3}
