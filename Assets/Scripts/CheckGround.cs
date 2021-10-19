@@ -35,6 +35,8 @@ public class CheckGround : MonoBehaviour
         {
             CheckAttack(direction, col);
             prspwn.PlayerDamaged();
+
+            player.rb2d.velocity = Vector2.zero;
         }
 
     }
@@ -43,6 +45,7 @@ public class CheckGround : MonoBehaviour
     {
         player.grounded = false;
         player.isOnTrap = false;
+
     }
 
     void CheckAttack(Vector3 attackDirection, Collision2D col)
@@ -56,14 +59,16 @@ public class CheckGround : MonoBehaviour
             {
                 //From the left
                 Debug.Log("hitted from the left");
-                transform.position = new Vector3(transform.position.x + 1f, 0, 0);
+                transform.position = new Vector3(transform.position.x + 2f, 0, 0);
             }
             else
             {
                 //From the right
                 Debug.Log("hitted from the right");
-                transform.position = new Vector3(transform.position.x - 1f, 0, 0);
+                transform.position = new Vector3(transform.position.x - 2f, 0, 0);
             }
+
+           
         }
     }
 }
