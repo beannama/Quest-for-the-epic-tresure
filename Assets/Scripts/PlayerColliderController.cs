@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player_Collider_Controller : MonoBehaviour
+public class PlayerColliderController : MonoBehaviour
 {
 
     public PlayerStateList pState;
-    private Player_Controller player;
+    private PlayerController player;
     private Rigidbody2D rb2d;
 
     public GameObject playerObject;
@@ -15,7 +15,7 @@ public class Player_Collider_Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GetComponent<Player_Controller>();
+        player = GetComponent<PlayerController>();
         pState = GetComponent<PlayerStateList>();
 
         playerObject = GameObject.Find("Player");
@@ -102,4 +102,6 @@ public class Player_Collider_Controller : MonoBehaviour
            
         }
     }
+
+
 }

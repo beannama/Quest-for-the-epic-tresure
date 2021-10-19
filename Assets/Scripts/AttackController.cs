@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attack_Controller : MonoBehaviour
+public class AttackController : MonoBehaviour
 {
     public PlayerStateList pState;
-
 
     public enum State
     {

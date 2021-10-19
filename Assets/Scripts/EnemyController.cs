@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_Controller : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     public enum StateEnum
     {
@@ -16,7 +16,7 @@ public class Enemy_Controller : MonoBehaviour
     private SpriteRenderer spriteR;
 
     public float Timer;
-    public float rechargeTime = 1f;
+    public float stateRechargeTime = 1f;
 
     public float spd;
 
@@ -34,7 +34,7 @@ public class Enemy_Controller : MonoBehaviour
         if (Timer <= 0)
         {
             ChangeState(StateEnum.Normal);
-            Timer = rechargeTime;
+            Timer = stateRechargeTime;
         }
         Timer -= Time.deltaTime;
     }
@@ -71,7 +71,8 @@ public class Enemy_Controller : MonoBehaviour
         {
             spriteR.color = Color.blue;
         }
-        else if(state == StateEnum.Normal){
+        else if(state == StateEnum.Normal)
+        {
             spriteR.color = Color.white;
         }
         else if (state == StateEnum.Hitted)
@@ -83,9 +84,9 @@ public class Enemy_Controller : MonoBehaviour
     void CheckAttack(Vector3 attackDirection, Collider2D col)
     {
         Vector3 direction = transform.position - attackDirection;
-        Attack_Controller attack_Controller= col.gameObject.GetComponent<Attack_Controller>();
+        AttackController attack_Controller= col.gameObject.GetComponent<AttackController>();
 
-        if (attack_Controller.state == Attack_Controller.State.Fire)
+        if (attack_Controller.state == AttackController.State.Fire)
         {
             ChangeState(StateEnum.Hitted);
             //Do
@@ -100,16 +101,14 @@ public class Enemy_Controller : MonoBehaviour
                 {
                     //From the right
                     transform.position = new Vector3(transform.position.x - 1f, 0, 0);
-
-
                 }
             }
         }
-        else if (attack_Controller.state == Attack_Controller.State.Cold)
+        else if (attack_Controller.state == AttackController.State.Cold)
         {
 
             //Do
-
+            // TODO: STOP MOVEMENT FOR X SECS
             ChangeState(StateEnum.Frozen);
         }
 

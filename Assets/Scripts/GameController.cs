@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Game_Controller : MonoBehaviour
+public class GameController : MonoBehaviour
 {
     public int torchCount;
     private bool complete;
@@ -19,14 +19,14 @@ public class Game_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((torchCount == 2) && !complete)
+        if ((torchCount == 3) && !complete)
         {
-            door_Controller.GetComponent<Door_Controller>().ChangeState();
+            door_Controller.GetComponent<DoorController>().ChangeState();
             complete = true;
         }
-        else if ((torchCount != 2) && complete)
+        else if ((torchCount != 3) && complete)
         {
-            door_Controller.GetComponent<Door_Controller>().ChangeState();
+            door_Controller.GetComponent<DoorController>().ChangeState();
             complete = false;
         }
     }

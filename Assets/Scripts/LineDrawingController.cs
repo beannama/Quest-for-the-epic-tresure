@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LineDrawing_controller : MonoBehaviour
+public class LineDrawingController : MonoBehaviour
 {
     public Transform from;
     public Transform to;

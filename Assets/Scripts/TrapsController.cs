@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Traps_Controller : MonoBehaviour
+public class TrapsController : MonoBehaviour
 {
     public GameObject playerObject;
     public PlayerRespawn prspwn;

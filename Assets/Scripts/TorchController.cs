@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Torch_Controller : MonoBehaviour
+public class TorchController : MonoBehaviour
 {
     public enum StateEnum
     {
@@ -32,20 +32,20 @@ public class Torch_Controller : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Attack_Controller attack_Controller= col.gameObject.GetComponent<Attack_Controller>();
+        AttackController attack_Controller = col.gameObject.GetComponent<AttackController>();
         if (col.gameObject.CompareTag("Attack"))
         {
-            if ((torchState == StateEnum.Off) && (attack_Controller.state == Attack_Controller.State.Fire))
+            if ((torchState == StateEnum.Off) && (attack_Controller.state == AttackController.State.Fire))
             {
                 spriteR.sprite = torchOn;
                 torchState = StateEnum.On;
-                EventSystem.GetComponent<Game_Controller>().IncreaseTorchCount();
+                EventSystem.GetComponent<GameController>().IncreaseTorchCount();
             }
-            else if ((torchState == StateEnum.On) && (attack_Controller.state == Attack_Controller.State.Cold))
+            else if ((torchState == StateEnum.On) && (attack_Controller.state == AttackController.State.Cold))
             {
                 spriteR.sprite = torchOff;
                 torchState = StateEnum.Off;
-                EventSystem.GetComponent<Game_Controller>().DecreaseTorchCount();
+                EventSystem.GetComponent<GameController>().DecreaseTorchCount();
             }
         }
     }
