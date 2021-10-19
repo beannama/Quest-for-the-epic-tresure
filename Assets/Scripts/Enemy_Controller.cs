@@ -7,35 +7,47 @@ public class Enemy_Controller : MonoBehaviour
     public enum StateEnum
     {
         Normal,
-        Frozen,
-        Stun
+        Hitted,
+        Frozen
     }
 
+    public GameObject attackObject;
     private StateEnum state;
     private SpriteRenderer spriteR;
+
+    public float Timer;
+    public float rechargeTime = 1f;
+
+    public float spd;
 
     // Start is called before the first frame update
     void Start()
     {
+        spd = 50f;
         spriteR = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Just checking change state
-        if (Input.GetKeyDown(KeyCode.L))
+
+        if (Timer <= 0)
         {
-            ChangeState(StateEnum.Frozen);
+            ChangeState(StateEnum.Normal);
+            Timer = rechargeTime;
         }
+        Timer -= Time.deltaTime;
     }
     private void OnTriggerEnter2D(Collider2D col)
     {
+        Vector3 direction = col.gameObject.transform.position;
+
         if (col.gameObject.CompareTag("Attack"))
         {
-            Debug.Log("enemy attacked!");
+            CheckAttack(direction, col);
         }
     }
+
     void ChangeState(StateEnum stateInput)
     {
         switch (stateInput)
@@ -46,8 +58,8 @@ public class Enemy_Controller : MonoBehaviour
             case StateEnum.Normal:
                 state = StateEnum.Normal;
                 break;
-            case StateEnum.Stun:
-                state = StateEnum.Stun;
+            case StateEnum.Hitted:
+                state = StateEnum.Hitted;
                 break;
         }
         ChangeColor();
@@ -59,9 +71,50 @@ public class Enemy_Controller : MonoBehaviour
         {
             spriteR.color = Color.blue;
         }
-        else if (state == StateEnum.Stun)
+        else if(state == StateEnum.Normal){
+            spriteR.color = Color.white;
+        }
+        else if (state == StateEnum.Hitted)
         {
             spriteR.color = Color.red;
         }
     }
+
+    void CheckAttack(Vector3 attackDirection, Collider2D col)
+    {
+        Vector3 direction = transform.position - attackDirection;
+        Attack_Controller attack_Controller= col.gameObject.GetComponent<Attack_Controller>();
+
+        if (attack_Controller.state == Attack_Controller.State.Fire)
+        {
+            ChangeState(StateEnum.Hitted);
+            //Do
+            if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+            {
+                if (direction.x > 0)
+                {
+                    //From the left
+                    Debug.Log("atk from the left");
+                    transform.position = new Vector3(transform.position.x + 1f, 0, 0);
+                }
+                else
+                {
+                    //From the right
+                    Debug.Log("atk from the right");
+                    transform.position = new Vector3(transform.position.x - 1f, 0, 0);
+
+
+                }
+            }
+        }
+        else if (attack_Controller.state == Attack_Controller.State.Cold)
+        {
+
+            //Do
+
+            ChangeState(StateEnum.Frozen);
+        }
+
+    }
+
 }

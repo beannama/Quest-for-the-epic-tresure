@@ -27,7 +27,7 @@ public class Player_Controller : MonoBehaviour
     public float Speed = 2f;
     public bool  grounded;
     public float jumpPower = 6.5f;
-    public float Timer, Timer2;
+    public float changeChrTimer, attackTimer;
     public float rechargeTime = 5f;
     public float attackRechargeTime = 2f;
     public float horizontalMov;
@@ -49,23 +49,23 @@ public class Player_Controller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (Timer <= 0)
+            if (changeChrTimer <= 0)
             {
                 ChangeCharacterState();
-                Timer = rechargeTime;
+                changeChrTimer = rechargeTime;
             }
         }
 
         if (Input.GetButtonDown("Fire1"))
         {
-            if (Timer2 <= 0){
+            if (attackTimer <= 0){
                 CreateAttack();
                 DestroyAttack();
-                Timer2 = attackRechargeTime;
+                attackTimer = attackRechargeTime;
             }
         }
-        Timer -= Time.deltaTime;
-        Timer2 -= Time.deltaTime;
+        changeChrTimer -= Time.deltaTime;
+        attackTimer -= Time.deltaTime;
     }
 
     void FixedUpdate(){
@@ -91,6 +91,9 @@ public class Player_Controller : MonoBehaviour
         }
 
     }
+
+
+
     void CheckLook(StateLooking stateLooking)
     {
         switch (stateLooking)
@@ -103,7 +106,6 @@ public class Player_Controller : MonoBehaviour
                 break;
         }
     }
-
 
     void ChangeCharacterState()
     {
@@ -128,6 +130,8 @@ public class Player_Controller : MonoBehaviour
     void CreateAttack()
     {
         Vector2 parentPosition;
+
+
         if (lookingState == StateLooking.Left)
         {
             parentPosition = new Vector2(transform.position.x - 1.5f, transform.position.y - 0.5f);
@@ -141,6 +145,7 @@ public class Player_Controller : MonoBehaviour
             GameObject childObject = Instantiate(attackObject, parentPosition, Quaternion.identity);
 
             childObject.transform.localScale = new Vector3(1f, 1f, 1f);
+
         }
     }
 
@@ -149,4 +154,5 @@ public class Player_Controller : MonoBehaviour
         GameObject attackCreated = GameObject.Find("Attack(Clone)");
         Destroy(attackCreated, 0.5f);
     }
+
 }
