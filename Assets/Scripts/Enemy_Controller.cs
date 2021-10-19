@@ -94,13 +94,11 @@ public class Enemy_Controller : MonoBehaviour
                 if (direction.x > 0)
                 {
                     //From the left
-                    Debug.Log("atk from the left");
                     transform.position = new Vector3(transform.position.x + 1f, 0, 0);
                 }
                 else
                 {
                     //From the right
-                    Debug.Log("atk from the right");
                     transform.position = new Vector3(transform.position.x - 1f, 0, 0);
 
 
