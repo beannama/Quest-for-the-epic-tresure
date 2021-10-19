@@ -9,6 +9,7 @@ public class PlayerStateList : MonoBehaviour
     public bool lookingRight;
     public bool isGrounded;
     public bool isRoofed;
+    public bool isOnTrap;
     public bool walking;
     public bool jumping;
     public bool recoilingX;

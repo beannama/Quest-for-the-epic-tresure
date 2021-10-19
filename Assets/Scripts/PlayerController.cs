@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public GameObject attackObject;
     public PlayerStateList pState;
 
+    public PlayerRespawn prspwn;
+
     private GameObject dragonGameObject;
     private GameObject mageGameObject;
 
@@ -26,6 +28,10 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        //TODO: CHECK THIS
+        prspwn = GetComponent<PlayerRespawn>();
+
+
         dragonGameObject = transform.Find("Dragon").gameObject;
         mageGameObject = transform.Find("Mage").gameObject;
 

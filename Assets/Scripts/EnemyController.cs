@@ -108,7 +108,7 @@ public class EnemyController : MonoBehaviour
         {
 
             //Do
-            // TODO: STOP MOVEMENT FOR X SECS
+            // TODO: STOP MOVEMENT FOR "X" SECS FOR THE ENEMY
             ChangeState(StateEnum.Frozen);
         }
 

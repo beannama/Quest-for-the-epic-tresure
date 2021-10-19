@@ -42,7 +42,8 @@ public class PlayerColliderController : MonoBehaviour
 
         if (col.gameObject.CompareTag("Traps"))
         {
-            player.isOnTrap = true;
+            pState.isOnTrap = true;
+            prspwn.KillPlayer();
         }
 
         if(col.gameObject.CompareTag("Platform")){
@@ -65,7 +66,7 @@ public class PlayerColliderController : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D col)
     {
-        player.isOnTrap = false;
+        pState.isOnTrap = false;
         if(col.gameObject.CompareTag("Land")){
 
             pState.isGrounded = false;
