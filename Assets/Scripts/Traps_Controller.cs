@@ -23,7 +23,7 @@ public class Traps_Controller : MonoBehaviour
         if (col.gameObject.CompareTag("Player"))
         {
             Debug.Log("Trap triggered!!");
-            prspwn.PlayerKillOnTrap();
+            prspwn.KillPlayer();
         }
     }
 }
