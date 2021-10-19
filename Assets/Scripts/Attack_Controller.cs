@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Attack_Controller : MonoBehaviour
 {
+    public PlayerStateList pState;
+
+
     public enum State
     {
         Fire,
@@ -20,31 +23,32 @@ public class Attack_Controller : MonoBehaviour
     private void OnEnable()
     {
         playerObject = GameObject.Find("Player");
+
         CheckState();
 
     }
     // Start is called before the first frame update
     void Start()
     {
+        pState = playerObject.GetComponent<PlayerStateList>();
         spriteR = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
         CheckState();
         CheckSprite();
     }
 
     private void CheckState()
     {
-        Player_Controller player_Controller = playerObject.GetComponent<Player_Controller>();
-        if(player_Controller.characterState == Player_Controller.StateCharacter.Dragon)
+        pState = playerObject.GetComponent<PlayerStateList>();
+        if (pState.usingDragon == true)
         {
             state = State.Fire;
         }
-        else if(player_Controller.characterState == Player_Controller.StateCharacter.Mage)
+        else if(pState.usingDragon == false)
         {
             state = State.Cold;
         }

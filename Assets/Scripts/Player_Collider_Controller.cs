@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckGround : MonoBehaviour
+public class Player_Collider_Controller : MonoBehaviour
 {
+
+    public PlayerStateList pState;
     private Player_Controller player;
     private Rigidbody2D rb2d;
 
@@ -14,6 +16,7 @@ public class CheckGround : MonoBehaviour
     void Start()
     {
         player = GetComponent<Player_Controller>();
+        pState = GetComponent<PlayerStateList>();
 
         playerObject = GameObject.Find("Player");
         prspwn = playerObject.GetComponent<PlayerRespawn>();
@@ -24,7 +27,9 @@ public class CheckGround : MonoBehaviour
         if(col.gameObject.CompareTag("Platform")){
             rb2d.velocity = new Vector3(0f,0f,0f);
             player.transform.parent = col.transform;
-            player.grounded = true;
+
+            pState.isGrounded = true;
+
         }
     }
 
@@ -32,15 +37,18 @@ public class CheckGround : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Land"))
         {
-            player.grounded = true;
+            pState.isGrounded = true;
         }
+
         if (col.gameObject.CompareTag("Traps"))
         {
             player.isOnTrap = true;
         }
+
         if(col.gameObject.CompareTag("Platform")){
             player.transform.parent = col.transform;
-            player.grounded = true;
+            pState.isGrounded = true;
+
         }
 
         Vector3 direction = col.gameObject.transform.position;
@@ -50,7 +58,7 @@ public class CheckGround : MonoBehaviour
             CheckAttack(direction, col);
             prspwn.PlayerDamaged();
 
-            player.rb2d.velocity = Vector2.zero;
+            rb2d.velocity = Vector2.zero;
         }
 
     }
@@ -59,11 +67,14 @@ public class CheckGround : MonoBehaviour
     {
         player.isOnTrap = false;
         if(col.gameObject.CompareTag("Land")){
-            player.grounded = false;
+
+            pState.isGrounded = false;
         }
         if(col.gameObject.CompareTag("Platform")){
             player.transform.parent = null;
-            player.grounded = false;
+
+            pState.isGrounded = false;
+
         }
 
     }

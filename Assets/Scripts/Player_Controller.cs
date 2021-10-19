@@ -4,58 +4,31 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
-    public enum StateLooking
-    {
-        Left,
-        Right
-    }
-    private StateLooking lookingState;
 
     public GameObject attackObject;
 
-    public Rigidbody2D rb2d;
+    public PlayerStateList pState;
 
-    private SpriteRenderer spriteR;
-    private bool jump;
-
-    public enum StateCharacter
-    {
-        Dragon,
-        Mage
-    }
-    public StateCharacter characterState;
     
-    public float maxSpeed = 5f;
-    public float Speed = 2f;
-    public bool  grounded;
-    public float jumpPower = 6.5f;
     public float changeChrTimer, attackTimer;
     public float rechargeTime = 5f;
     public float attackRechargeTime = 2f;
-    public float horizontalMov;
     public bool isOnTrap;
     
 
     void Start()
     {
-        lookingState = StateLooking.Right;
-        characterState = StateCharacter.Dragon;
-        rb2d = GetComponent<Rigidbody2D>();
-
+        pState = GetComponent<PlayerStateList>();
+        pState.usingDragon = true;
     }
 
     void Update()
     {
-
-        if (Input.GetButtonDown("Jump") && grounded) {
-            jump = true;
-        }
-
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (changeChrTimer <= 0)
             {
-                ChangeCharacterState();
+                ChangeUsingCharacterState();
                 changeChrTimer = rechargeTime;
             }
         }
@@ -71,88 +44,46 @@ public class Player_Controller : MonoBehaviour
 
         changeChrTimer -= Time.deltaTime;
         attackTimer -= Time.deltaTime;
-
-    }
-
-    void FixedUpdate(){
-        horizontalMov = Input.GetAxis("Horizontal");
-        rb2d.AddForce(Vector2.right * Speed * horizontalMov);
-
-        float limiteSpeed = Mathf.Clamp(rb2d.velocity.x, -maxSpeed, maxSpeed);
-        rb2d.velocity = new Vector2(limiteSpeed, rb2d.velocity.y);
-
-
-        if(horizontalMov > 0.1f){
-            transform.localScale = new Vector3(1f,1f,1f);
-            CheckLook(StateLooking.Right);
-        }
-        if (horizontalMov < -0.1f){
-            transform.localScale = new Vector3(-1f,1f,1f);
-            CheckLook(StateLooking.Left);
-        }
-
-        if (jump){
-            rb2d.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            jump = false;
-        }
-
     }
 
 
-
-    void CheckLook(StateLooking stateLooking)
-    {
-        switch (stateLooking)
-        {
-            case StateLooking.Left:
-                lookingState = StateLooking.Left;
-                break;
-            case StateLooking.Right:
-                lookingState = StateLooking.Right;
-                break;
-        }
-    }
-
-    void ChangeCharacterState()
+    void ChangeUsingCharacterState()
     {
         GameObject dragonGameObject = transform.Find("Dragon").gameObject;
         GameObject mageGameObject = transform.Find("Mage").gameObject;
 
-        if(characterState == StateCharacter.Dragon)
+        if(pState.usingDragon == true)
         {
             dragonGameObject.SetActive(false);
             mageGameObject.SetActive(true);
-            characterState = StateCharacter.Mage;
+            pState.usingDragon = false;
         }
-        else if (characterState == StateCharacter.Mage)
+        else if (pState.usingDragon == true)
         {
             dragonGameObject.SetActive(true);
             mageGameObject.SetActive(false);
-            characterState = StateCharacter.Dragon;
-
+            pState.usingDragon = true;
         }
     }
 
     void CreateAttack()
     {
-        Vector2 parentPosition;
+        Vector2 parentPosition = new Vector2();
 
+        Quaternion facing = new Quaternion();
 
-        if (lookingState == StateLooking.Left)
+        if (pState.lookingRight == false)
         {
             parentPosition = new Vector2(transform.position.x - 1.5f, transform.position.y - 0.5f);
-            GameObject childObject = Instantiate(attackObject, parentPosition, Quaternion.identity);
-
-            childObject.transform.localScale = new Vector3(-1f, 1f, 1f);
+            facing = new Quaternion(0, 180, 0, 0);
         }
-        if (lookingState == StateLooking.Right)
+        if (pState.lookingRight == true)
         {
             parentPosition = new Vector2(transform.position.x + 1.5f, transform.position.y - 0.5f);
-            GameObject childObject = Instantiate(attackObject, parentPosition, Quaternion.identity);
-
-            childObject.transform.localScale = new Vector3(1f, 1f, 1f);
-
+            facing = new Quaternion(0, 0, 0, 0);
         }
+
+        Instantiate(attackObject, parentPosition, facing);
     }
 
     void DestroyAttack()

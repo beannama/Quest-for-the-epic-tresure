@@ -252,8 +252,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241292893}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.46, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.15, z: 1}
+  m_LocalPosition: {x: 0.058, y: -0.46, z: 0}
+  m_LocalScale: {x: 0.13, y: 0.15, z: 1}
   m_Children: []
   m_Father: {fileID: 590800266}
   m_RootOrder: 1
@@ -520,6 +520,8 @@ GameObject:
   - component: {fileID: 590800261}
   - component: {fileID: 590800267}
   - component: {fileID: 590800264}
+  - component: {fileID: 590800265}
+  - component: {fileID: 590800268}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -544,7 +546,7 @@ MonoBehaviour:
   characterState: 0
   maxSpeed: 4
   Speed: 70
-  grounded: 0
+  isGrounded: 0
   jumpPower: 9.25
   changeChrTimer: 0
   attackTimer: 0
@@ -586,7 +588,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.015562534, y: -0.5980911}
+  m_Offset: {x: 0.082313776, y: -0.5980911}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -597,7 +599,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5853243, y: 1.2213478}
+  m_Size: {x: 0.74995184, y: 1.2213478}
   m_EdgeRadius: 0
 --- !u!114 &590800264
 MonoBehaviour:
@@ -615,6 +617,29 @@ MonoBehaviour:
   - {fileID: 844093244}
   - {fileID: 2084306382}
   - {fileID: 1337919973}
+--- !u!114 &590800265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590800260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cdf00325db69ed41a05fc8a737706d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pState: {fileID: 0}
+  rb2d: {fileID: 0}
+  walkSpeed: 5
+  jumpSpeed: 5
+  fallSpeed: 5
+  jumpSteps: 15
+  jumpThreshold: 7
+  recoilXSteps: 4
+  recoilYSteps: 10
+  recoilXSpeed: 45
+  recoilYSpeed: 45
 --- !u!4 &590800266
 Transform:
   m_ObjectHideFlags: 0
@@ -623,7 +648,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 590800260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.49, y: 1.17, z: -0.3375448}
+  m_LocalPosition: {x: -8.461, y: 1.17, z: -0.3375448}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 371465952}
@@ -643,8 +668,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4943a0739cd959c4a90e439ef36d78d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pState: {fileID: 0}
   playerObject: {fileID: 0}
   prspwn: {fileID: 0}
+--- !u!114 &590800268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590800260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66bd65c2950bf3a45b8608bb4c474696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usingDragon: 0
+  lookingRight: 0
+  isGrounded: 0
+  isRoofed: 0
+  walking: 0
+  jumping: 0
+  recoilingX: 0
+  recoilingY: 0
 --- !u!1001 &703556726
 PrefabInstance:
   m_ObjectHideFlags: 0
