@@ -85,18 +85,31 @@ public class PlayerController : MonoBehaviour
 
         Quaternion facing = new Quaternion();
 
+        //FACING ATTACK
         if (pState.lookingRight == false)
         {
             parentPosition = new Vector2(transform.position.x - 1.5f, transform.position.y - 0.5f);
             facing = new Quaternion(0, 180, 0, 0);
         }
-        if (pState.lookingRight == true)
+        else if (pState.lookingRight == true)
         {
             parentPosition = new Vector2(transform.position.x + 1.5f, transform.position.y - 0.5f);
             facing = new Quaternion(0, 0, 0, 0);
         }
 
-        Instantiate(attackObject, parentPosition, facing);
+        
+        GameObject childObject = Instantiate(attackObject, parentPosition, facing);
+
+        //ATK PROPERTY
+        if (pState.usingDragon == true)
+        {
+            childObject.GetComponent<AttackController>().state = AttackController.State.Fire;
+        }
+        else if (pState.usingDragon == false)
+        {
+            childObject.GetComponent<AttackController>().state = AttackController.State.Cold;
+        }
+
     }
     void DestroyAttack()
     {

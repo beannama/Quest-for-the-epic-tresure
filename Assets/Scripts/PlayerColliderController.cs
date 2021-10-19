@@ -26,7 +26,6 @@ public class PlayerColliderController : MonoBehaviour
             player.transform.parent = col.transform;
 
             pState.isGrounded = true;
-
         }
     }
 
