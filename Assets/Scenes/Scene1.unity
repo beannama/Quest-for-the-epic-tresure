@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackObject: {fileID: 365841635532078566, guid: f7da6f8dd086b3f4b82dd697d79e407d, type: 3}
   Timer: 0
-  rechargeTime: 5
+  stateRechargeTime: 1
   spd: 0
 --- !u!50 &65565813
 Rigidbody2D:
@@ -542,17 +542,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackObject: {fileID: 365841635532078566, guid: f7da6f8dd086b3f4b82dd697d79e407d, type: 3}
-  rb2d: {fileID: 0}
-  characterState: 0
-  maxSpeed: 4
-  Speed: 70
-  isGrounded: 0
-  jumpPower: 9.25
+  pState: {fileID: 0}
   changeChrTimer: 0
   attackTimer: 0
   rechargeTime: 5
   attackRechargeTime: 2
-  horizontalMov: 0
   isOnTrap: 0
 --- !u!50 &590800262
 Rigidbody2D:

@@ -6,18 +6,29 @@ public class PlayerController : MonoBehaviour
 {
 
     public GameObject attackObject;
-
     public PlayerStateList pState;
 
-    
-    public float changeChrTimer, attackTimer;
-    public float rechargeTime = 5f;
-    public float attackRechargeTime = 2f;
+    private GameObject dragonGameObject;
+    private GameObject mageGameObject;
+
+    float changeChrTimer;
+    float attackTimer;
+
+    [Header("Timers")]
+    [SerializeField] float rechargeTime = 5;
+    [SerializeField] float attackRechargeTime = 2;
+
+    [Space(5)]
+
+    [Header(" Booleans (need to be changed) ")]
     public bool isOnTrap;
     
 
     void Start()
     {
+        dragonGameObject = transform.Find("Dragon").gameObject;
+        mageGameObject = transform.Find("Mage").gameObject;
+
         pState = GetComponent<PlayerStateList>();
         pState.usingDragon = true;
     }
@@ -49,16 +60,13 @@ public class PlayerController : MonoBehaviour
 
     void ChangeUsingCharacterState()
     {
-        GameObject dragonGameObject = transform.Find("Dragon").gameObject;
-        GameObject mageGameObject = transform.Find("Mage").gameObject;
-
         if(pState.usingDragon == true)
         {
             dragonGameObject.SetActive(false);
             mageGameObject.SetActive(true);
             pState.usingDragon = false;
         }
-        else if (pState.usingDragon == true)
+        else if (pState.usingDragon == false)
         {
             dragonGameObject.SetActive(true);
             mageGameObject.SetActive(false);
@@ -85,7 +93,6 @@ public class PlayerController : MonoBehaviour
 
         Instantiate(attackObject, parentPosition, facing);
     }
-
     void DestroyAttack()
     {
         GameObject attackCreated = GameObject.Find("Attack(Clone)");
