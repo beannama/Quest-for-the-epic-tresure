@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     public int torchCount;
     private bool complete;
     private GameObject door_Controller;
+    public GameObject[] hearts;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,18 @@ public class GameController : MonoBehaviour
         {
             door_Controller.GetComponent<DoorController>().ChangeState();
             complete = false;
+        }
+    }
+
+    public void CheckLife(int life)
+    {
+        if (life == 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        else
+        {
+            Destroy(hearts[hearts.Length - 1].gameObject);
         }
     }
 

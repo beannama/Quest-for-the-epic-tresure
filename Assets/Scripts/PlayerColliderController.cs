@@ -10,8 +10,6 @@ public class PlayerColliderController : MonoBehaviour
     private Rigidbody2D rb2d;
 
     public GameObject playerObject;
-
-    public PlayerRespawn prspwn;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +17,6 @@ public class PlayerColliderController : MonoBehaviour
         pState = GetComponent<PlayerStateList>();
 
         playerObject = GameObject.Find("Player");
-        prspwn = playerObject.GetComponent<PlayerRespawn>();
         rb2d = GetComponentInParent<Rigidbody2D>();
     }
 
@@ -43,7 +40,7 @@ public class PlayerColliderController : MonoBehaviour
         if (col.gameObject.CompareTag("Traps"))
         {
             pState.isOnTrap = true;
-            prspwn.KillPlayer();
+            player.KillPlayer();
         }
 
         if(col.gameObject.CompareTag("Platform")){
@@ -57,7 +54,7 @@ public class PlayerColliderController : MonoBehaviour
         if (col.gameObject.CompareTag("Enemy"))
         {
             CheckAttack(direction, col);
-            prspwn.PlayerDamaged();
+            player.ReceiveDamage();
 
             rb2d.velocity = Vector2.zero;
         }

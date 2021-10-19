@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    private GameController gameController;
     public GameObject attackObject;
     public PlayerStateList pState;
-
-    public PlayerRespawn prspwn;
 
     private GameObject dragonGameObject;
     private GameObject mageGameObject;
 
     float changeChrTimer;
     float attackTimer;
+    private int life;
 
     [Header("Timers")]
     [SerializeField] float rechargeTime = 5;
@@ -28,9 +27,9 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         //TODO: CHECK THIS
-        prspwn = GetComponent<PlayerRespawn>();
-
+        life = 3;
 
         dragonGameObject = transform.Find("Dragon").gameObject;
         mageGameObject = transform.Find("Mage").gameObject;
@@ -105,4 +104,16 @@ public class PlayerController : MonoBehaviour
         Destroy(attackCreated, 0.5f);
     }
 
+    public void ReceiveDamage()
+    {
+        Debug.Log("AAA");
+        life--;
+        gameController.CheckLife(life);
+    }
+
+    public void KillPlayer()
+    {
+        life = 0;
+        gameController.CheckLife(life);
+    }
 }
