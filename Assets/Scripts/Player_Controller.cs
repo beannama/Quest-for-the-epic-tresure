@@ -4,51 +4,62 @@ using UnityEngine;
 
 public class Player_Controller : MonoBehaviour
 {
-    public enum StateLooking
+    public StateFacing RIGHT_FACING = StateFacing.Right;
+    public StateFacing LEFT_FACING = StateFacing.Left;
+    public StateUsingCharacter DRAGON_CHARACTER = StateUsingCharacter.Dragon;
+    public StateUsingCharacter MAGE_CHARACTER = StateUsingCharacter.Mage;
+
+    public enum StateFacing
     {
         Left,
         Right
+    }    
+    public enum StateUsingCharacter
+    {
+        Dragon,
+        Mage
     }
-    private StateLooking lookingState;
+
+    private StateFacing facingState;
+    public StateUsingCharacter characterUsingState;
 
     public GameObject attackObject;
 
     public Rigidbody2D rb2d;
 
     private SpriteRenderer spriteR;
-    private bool jump;
 
-    public enum StateCharacter
-    {
-        Dragon,
-        Mage
-    }
-    public StateCharacter characterState;
-    
-    public float maxSpeed = 5f;
-    public float Speed = 2f;
-    public bool  grounded;
-    public float jumpPower = 6.5f;
+
+    public PlayerStateList pState;
+
+    //public float maxSpeed = 5f;
+    //public float Speed = 2f;
+    //public float jumpPower = 6.5f;
     public float changeChrTimer, attackTimer;
     public float rechargeTime = 5f;
     public float attackRechargeTime = 2f;
-    public float horizontalMov;
+    //public float horizontalMov;
+
+
     public bool isOnTrap;
-    
+    public bool isGrounded;
+    public bool isJumping;
+
 
     void Start()
     {
-        lookingState = StateLooking.Right;
-        characterState = StateCharacter.Dragon;
+        facingState = RIGHT_FACING;
+        characterUsingState = DRAGON_CHARACTER;
         rb2d = GetComponent<Rigidbody2D>();
-
+        //TODO: CHECK THIS
+        pState = GetComponent<PlayerStateList>();
     }
 
     void Update()
     {
 
-        if (Input.GetButtonDown("Jump") && grounded) {
-            jump = true;
+        if (Input.GetButtonDown("Jump") && isGrounded) {
+            JumpPlayer();
         }
 
         if (Input.GetKeyDown(KeyCode.Tab))
@@ -74,88 +85,78 @@ public class Player_Controller : MonoBehaviour
 
     }
 
-    void FixedUpdate(){
-        horizontalMov = Input.GetAxis("Horizontal");
-        rb2d.AddForce(Vector2.right * Speed * horizontalMov);
-
-        float limiteSpeed = Mathf.Clamp(rb2d.velocity.x, -maxSpeed, maxSpeed);
-        rb2d.velocity = new Vector2(limiteSpeed, rb2d.velocity.y);
 
 
-        if(horizontalMov > 0.1f){
-            transform.localScale = new Vector3(1f,1f,1f);
-            CheckLook(StateLooking.Right);
-        }
-        if (horizontalMov < -0.1f){
-            transform.localScale = new Vector3(-1f,1f,1f);
-            CheckLook(StateLooking.Left);
-        }
 
-        if (jump){
-            rb2d.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-            jump = false;
-        }
-
+    public void GroundPlayer()
+    {
+        pState.jumping = false;
+        
+        isGrounded = true;
+        isJumping = false;
     }
 
+    public void JumpPlayer()
+    {
 
+        pState.jumping = true;
 
-    void CheckLook(StateLooking stateLooking)
+        isGrounded = false;
+        isJumping = true;
+    }
+
+    public void ChangeLookState(StateFacing stateLooking)
     {
         switch (stateLooking)
         {
-            case StateLooking.Left:
-                lookingState = StateLooking.Left;
+            case StateFacing.Left:
+                facingState = LEFT_FACING;
                 break;
-            case StateLooking.Right:
-                lookingState = StateLooking.Right;
+            case StateFacing.Right:
+                facingState = RIGHT_FACING;
                 break;
         }
     }
 
-    void ChangeCharacterState()
+    private void ChangeCharacterState()
     {
         GameObject dragonGameObject = transform.Find("Dragon").gameObject;
         GameObject mageGameObject = transform.Find("Mage").gameObject;
 
-        if(characterState == StateCharacter.Dragon)
+        if(characterUsingState == DRAGON_CHARACTER)
         {
             dragonGameObject.SetActive(false);
             mageGameObject.SetActive(true);
-            characterState = StateCharacter.Mage;
+            characterUsingState = MAGE_CHARACTER;
         }
-        else if (characterState == StateCharacter.Mage)
+        else if (characterUsingState == MAGE_CHARACTER)
         {
             dragonGameObject.SetActive(true);
             mageGameObject.SetActive(false);
-            characterState = StateCharacter.Dragon;
+            characterUsingState = DRAGON_CHARACTER;
 
         }
     }
 
-    void CreateAttack()
+    private void CreateAttack()
     {
-        Vector2 parentPosition;
-
-
-        if (lookingState == StateLooking.Left)
+        Vector2 parentPosition = new Vector2();
+        Quaternion facing = new Quaternion();
+        if (facingState == LEFT_FACING)
         {
             parentPosition = new Vector2(transform.position.x - 1.5f, transform.position.y - 0.5f);
-            GameObject childObject = Instantiate(attackObject, parentPosition, Quaternion.identity);
-
-            childObject.transform.localScale = new Vector3(-1f, 1f, 1f);
+            facing = new Quaternion(0, 180, 0, 0);
         }
-        if (lookingState == StateLooking.Right)
+        else if (facingState == RIGHT_FACING)
         {
             parentPosition = new Vector2(transform.position.x + 1.5f, transform.position.y - 0.5f);
-            GameObject childObject = Instantiate(attackObject, parentPosition, Quaternion.identity);
-
-            childObject.transform.localScale = new Vector3(1f, 1f, 1f);
+            facing = new Quaternion(0, 0, 0, 0);
 
         }
+        Instantiate(attackObject, parentPosition, facing);
     }
 
-    void DestroyAttack()
+    private void DestroyAttack()
     {
         GameObject attackCreated = GameObject.Find("Attack(Clone)");
         Destroy(attackCreated, 0.5f);

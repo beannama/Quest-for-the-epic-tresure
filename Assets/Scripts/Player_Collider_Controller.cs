@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckGround : MonoBehaviour
+public class Player_Collider_Controller : MonoBehaviour
 {
     private Player_Controller player;
     private Rigidbody2D rb2d;
@@ -24,7 +24,7 @@ public class CheckGround : MonoBehaviour
         if(col.gameObject.CompareTag("Platform")){
             rb2d.velocity = new Vector3(0f,0f,0f);
             player.transform.parent = col.transform;
-            player.grounded = true;
+            player.GroundPlayer();
         }
     }
 
@@ -32,7 +32,7 @@ public class CheckGround : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Land"))
         {
-            player.grounded = true;
+            player.GroundPlayer();
         }
         if (col.gameObject.CompareTag("Traps"))
         {
@@ -40,14 +40,15 @@ public class CheckGround : MonoBehaviour
         }
         if(col.gameObject.CompareTag("Platform")){
             player.transform.parent = col.transform;
-            player.grounded = true;
+            player.GroundPlayer();
+
         }
 
         Vector3 direction = col.gameObject.transform.position;
 
         if (col.gameObject.CompareTag("Enemy"))
         {
-            CheckAttack(direction, col);
+            CheckCollitionDirection(direction, col);
             prspwn.PlayerDamaged();
 
             player.rb2d.velocity = Vector2.zero;
@@ -59,20 +60,19 @@ public class CheckGround : MonoBehaviour
     {
         player.isOnTrap = false;
         if(col.gameObject.CompareTag("Land")){
-            player.grounded = false;
+            player.GroundPlayer();
         }
-        if(col.gameObject.CompareTag("Platform")){
+        if (col.gameObject.CompareTag("Platform")){
             player.transform.parent = null;
-            player.grounded = false;
+            player.GroundPlayer();
         }
 
     }
 
-    void CheckAttack(Vector3 attackDirection, Collision2D col)
+    void CheckCollitionDirection(Vector3 attackDirection, Collision2D col)
     {
         Vector3 direction = transform.position - attackDirection;
 
-        //Do
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {
             if (direction.x > 0)

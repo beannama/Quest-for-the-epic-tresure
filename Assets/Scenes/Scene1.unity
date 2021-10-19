@@ -520,6 +520,8 @@ GameObject:
   - component: {fileID: 590800261}
   - component: {fileID: 590800267}
   - component: {fileID: 590800264}
+  - component: {fileID: 590800265}
+  - component: {fileID: 590800268}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -539,19 +541,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64244d6b0045eb74198081479194b827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RIGHT_FACING: 1
+  LEFT_FACING: 0
+  DRAGON_CHARACTER: 0
+  MAGE_CHARACTER: 1
+  characterUsingState: 0
   attackObject: {fileID: 365841635532078566, guid: f7da6f8dd086b3f4b82dd697d79e407d, type: 3}
   rb2d: {fileID: 0}
-  characterState: 0
-  maxSpeed: 4
-  Speed: 70
-  grounded: 0
-  jumpPower: 9.25
+  pState: {fileID: 0}
   changeChrTimer: 0
   attackTimer: 0
   rechargeTime: 5
   attackRechargeTime: 2
-  horizontalMov: 0
   isOnTrap: 0
+  isGrounded: 0
+  isJumping: 0
 --- !u!50 &590800262
 Rigidbody2D:
   serializedVersion: 4
@@ -567,7 +571,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -615,6 +619,29 @@ MonoBehaviour:
   - {fileID: 844093244}
   - {fileID: 2084306382}
   - {fileID: 1337919973}
+--- !u!114 &590800265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590800260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cdf00325db69ed41a05fc8a737706d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pState: {fileID: 0}
+  player_Controller: {fileID: 0}
+  walkSpeed: 5
+  jumpSpeed: 10
+  fallSpeed: 10
+  jumpSteps: 20
+  jumpThreshold: 7
+  recoilXSteps: 4
+  recoilYSteps: 10
+  recoilXSpeed: 45
+  recoilYSpeed: 45
 --- !u!4 &590800266
 Transform:
   m_ObjectHideFlags: 0
@@ -645,6 +672,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObject: {fileID: 0}
   prspwn: {fileID: 0}
+--- !u!114 &590800268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 590800260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66bd65c2950bf3a45b8608bb4c474696, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walking: 0
+  interact: 0
+  interacting: 0
+  lookingRight: 0
+  jumping: 0
+  recoilingX: 0
+  recoilingY: 0
+  casting: 0
+  castReleased: 0
+  onBench: 0
+  atBench: 0
+  atNPC: 0
+  usingNPC: 0
 --- !u!1001 &703556726
 PrefabInstance:
   m_ObjectHideFlags: 0

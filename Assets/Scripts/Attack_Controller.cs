@@ -40,11 +40,11 @@ public class Attack_Controller : MonoBehaviour
     private void CheckState()
     {
         Player_Controller player_Controller = playerObject.GetComponent<Player_Controller>();
-        if(player_Controller.characterState == Player_Controller.StateCharacter.Dragon)
+        if(player_Controller.characterUsingState == Player_Controller.StateUsingCharacter.Dragon)
         {
             state = State.Fire;
         }
-        else if(player_Controller.characterState == Player_Controller.StateCharacter.Mage)
+        else if(player_Controller.characterUsingState == Player_Controller.StateUsingCharacter.Mage)
         {
             state = State.Cold;
         }
