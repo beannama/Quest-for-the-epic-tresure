@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
     public int torchCount;
     private bool complete;
     private GameObject door_Controller;
-    public GameObject[] hearts;
+    public List<GameObject> hearts;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +41,8 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            Destroy(hearts[hearts.Length - 1].gameObject);
+            Destroy(hearts[hearts.Count - 1].gameObject);
+            hearts.RemoveAt(hearts.Count -1);
         }
     }
 

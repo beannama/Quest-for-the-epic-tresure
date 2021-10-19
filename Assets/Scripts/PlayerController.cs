@@ -119,7 +119,6 @@ public class PlayerController : MonoBehaviour
 
     public void ReceiveDamage()
     {
-        Debug.Log("AAA");
         life--;
         gameController.CheckLife(life);
     }
