@@ -25,6 +25,7 @@ public class Player_Controller : MonoBehaviour
     public float rechargeTime = 5f;
     public float attackRechargeTime = 2f;
     public float horizontalMov;
+    public bool isOnTrap;
     
 
     void Start()

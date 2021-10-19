@@ -17,9 +17,13 @@ public class CheckGround : MonoBehaviour
         {
             player.grounded = true;
         }
+        if(col.gameObject.CompareTag("Traps")){
+            player.isOnTrap = true;
+        }
     }
 
     void OnCollisionExit2D(Collision2D col){
         player.grounded = false;
+        player.isOnTrap = false;
     }
 }
