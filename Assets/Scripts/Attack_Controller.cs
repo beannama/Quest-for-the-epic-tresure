@@ -9,23 +9,30 @@ public class Attack_Controller : MonoBehaviour
         Fire,
         Cold
     }
-    private State state;
+    public State state;
 
     private SpriteRenderer spriteR;
 
     public GameObject playerObject;
 
     public Sprite[] spriteArray;
+
+    private void OnEnable()
+    {
+        playerObject = GameObject.Find("Player");
+        CheckState();
+
+    }
     // Start is called before the first frame update
     void Start()
     {
-        playerObject = GameObject.Find("Player");
         spriteR = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
         CheckState();
         CheckSprite();
     }
