@@ -44,7 +44,6 @@ public class DoorController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        //No se todavia porque no entra aca
         if (col.gameObject.CompareTag("Player"))
         {
             if (doorState == StateEnum.Open)

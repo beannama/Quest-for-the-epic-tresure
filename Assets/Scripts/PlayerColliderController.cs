@@ -38,7 +38,6 @@ public class PlayerColliderController : MonoBehaviour
 
         if (col.gameObject.CompareTag("Traps"))
         {
-            pState.isOnTrap = true;
             player.KillPlayer();
         }
 
