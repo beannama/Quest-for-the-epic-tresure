@@ -21,7 +21,7 @@ public class Player_Controller : MonoBehaviour
         Dragon,
         Mage
     }
-    private StateCharacter characterState;
+    public StateCharacter characterState;
     
     public float maxSpeed = 5f;
     public float Speed = 2f;
