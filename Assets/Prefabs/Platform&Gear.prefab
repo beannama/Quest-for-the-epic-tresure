@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 3890089374068730007}
   m_Layer: 0
   m_Name: MovingPlatform
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,7 +347,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pandGear: {fileID: 8026508575293477955}
-  platform: {fileID: 5592903996911998840}
+  platform: {fileID: 0}
+  platform_Controller: {fileID: 0}
   isMoving: 0
 --- !u!1 &8026508575293477955
 GameObject:

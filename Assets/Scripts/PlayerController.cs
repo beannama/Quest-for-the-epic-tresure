@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class PlayerController : MonoBehaviour
     [Header(" Booleans (need to be changed) ")]
     public bool isOnTrap;
     
+    public Image timerCircleDragon;
+    public Image timerCircleWizard;
 
     void Start()
     {
@@ -48,6 +51,7 @@ public class PlayerController : MonoBehaviour
                 changeChrTimer = rechargeTime;
             }
         }
+        CircleTimer();
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -127,5 +131,23 @@ public class PlayerController : MonoBehaviour
     {
         life = 0;
         gameController.CheckLife(life);
+    }
+
+    void CircleTimer(){
+        Image timerCircle;
+        if (pState.usingDragon == true){
+            timerCircleDragon.fillAmount = 0;
+            timerCircle = timerCircleWizard;
+        }
+        else{
+            timerCircleWizard.fillAmount = 0;
+            timerCircle = timerCircleDragon;
+        }
+        if (changeChrTimer > 0){
+            timerCircle.fillAmount = 1-(changeChrTimer/rechargeTime);
+        }
+        else{
+            timerCircle.fillAmount = 1;
+        }
     }
 }
