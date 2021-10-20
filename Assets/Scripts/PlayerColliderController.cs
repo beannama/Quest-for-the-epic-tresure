@@ -86,13 +86,13 @@ public class PlayerColliderController : MonoBehaviour
             {
                 //From the left
                 //Debug.Log("hitted from the left");
-                transform.position = new Vector3(transform.position.x + 2f, 0, 0);
+                transform.position = new Vector3(transform.position.x + 2f, transform.position.y, 0);
             }
             else
             {
                 //From the right
                 //Debug.Log("hitted from the right");
-                transform.position = new Vector3(transform.position.x - 2f, 0, 0);
+                transform.position = new Vector3(transform.position.x - 2f, transform.position.y, 0);
             }
 
            
