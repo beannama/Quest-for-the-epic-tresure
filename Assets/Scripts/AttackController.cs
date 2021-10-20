@@ -15,11 +15,6 @@ public class AttackController : MonoBehaviour
 
     public Sprite[] spriteArray;
 
-    private void OnEnable()
-    {
-        spriteR = gameObject.GetComponent<SpriteRenderer>();
-        
-    }
     // Start is called before the first frame update
     void Start()
     {

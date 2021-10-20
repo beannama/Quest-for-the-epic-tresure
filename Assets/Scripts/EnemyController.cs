@@ -95,12 +95,12 @@ public class EnemyController : MonoBehaviour
                 if (direction.x > 0)
                 {
                     //From the left
-                    transform.position = new Vector3(transform.position.x + 1f, 0, 0);
+                    transform.position = new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z);
                 }
                 else
                 {
                     //From the right
-                    transform.position = new Vector3(transform.position.x - 1f, 0, 0);
+                    transform.position = new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z);
                 }
             }
         }
