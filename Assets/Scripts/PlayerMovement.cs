@@ -116,9 +116,16 @@ public class PlayerMovement : MonoBehaviour
 
 
         //Jumping
-        if (Input.GetButtonDown("Jump") && pState.isGrounded)
+        if (Input.GetButtonDown("Jump"))
         {
-            pState.jumping = true;
+            if (pState.isGrounded){
+                pState.jumping = true;
+                pState.doublejump = true;
+            }
+            else if(pState.doublejump){
+                pState.jumping = true;
+                pState.doublejump = false;
+            }
         }
 
         if (!Input.GetButton("Jump") && stepsJumped < jumpSteps && stepsJumped > jumpThreshold && pState.jumping)
