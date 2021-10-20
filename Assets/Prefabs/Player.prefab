@@ -100,8 +100,10 @@ MonoBehaviour:
   attackObject: {fileID: 365841635532078566, guid: f7da6f8dd086b3f4b82dd697d79e407d, type: 3}
   pState: {fileID: 0}
   rechargeTime: 5
-  attackRechargeTime: 2
+  attackRechargeTime: 1
   isOnTrap: 0
+  timerCircleDragon: {fileID: 0}
+  timerCircleWizard: {fileID: 0}
 --- !u!114 &9144024537001263866
 MonoBehaviour:
   m_ObjectHideFlags: 0
