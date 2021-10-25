@@ -14,3 +14,20 @@ trampa).
 - [X] Que el jugador pueda perder perdiendo todas las vidas.
 - [X] Que el jugador pueda completar un nivel simple que permita experimentar todas las
 funcionalidades anteriormente descritas.
+
+## Version Beta
+
+- [ ] Que el jugador pueda realizar todas las capacidades completa.
+- [ ] Que los dos personajes sean completamente jugables con todas sus habilidades debidas.
+- [ ] Que el jugador pueda utilizar los hechizos en todos los elementos de puzzle planificados.
+- [ ] Que el jugador pueda interactuar con todos los enemigos distintos planificados.
+- [ ] Que el jugador sea castigado por fallar el puzzle de alguna manera clara.
+- [ ] Que el jugador pueda recolectar todos los posibles items (como corazones) que sean
+planificados.
+- [ ] Que el juego tenga una forma de mostrar lore.
+- [ ] Que el enemigo grande sea cap´az de seguir al jugador de forma simple para estorbarlo
+un poco y con interacci´on completa.
+- [ ] Que el juego tenga los assets visuales/sonido m´as cerca de las finales que se piensa
+utilizar.
+- [ ] Que el juego tenga un UI de reiniciar/ganar/perder el juego funcional.
+- [ ] El primer nivel real completado.
