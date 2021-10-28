@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour
         dragonGameObject = transform.Find("Dragon").gameObject;
         mageGameObject = transform.Find("Mage").gameObject;
 
+        timerCircleDragon = GameObject.Find("dragon_circle").GetComponent<Image>();
+        timerCircleWizard = GameObject.Find("wizard_circle").GetComponent<Image>();
+
         pState = GetComponent<PlayerStateList>();
         pState.usingDragon = true;
     }

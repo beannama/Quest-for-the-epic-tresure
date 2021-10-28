@@ -1,0 +1,16 @@
+-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+W	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	W
+W	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	W
+W	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	F	F	F	F	F	F	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	W
+W	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	W
+W	-	-	P	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	E	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	X	-	-	-	-	-	-	W
+W	-	-	-	-	-	-	-	-	-	-	-	-	F	F	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	W
+W	-	-	-	-	-	-	-	-	-	-	F	F	G	W	-	-	-	F	F	F	F	F	F	F	F	F	F	F	F	-	PG	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	F	F	F	F	F	F	F	F	F	F	F	F	F	F	W
+W	-	-	-	-	-	-	-	-	F	F	G	G	G	W	-	-	-	W	W	W	G	G	G	G	G	G	G	G	W	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	W	G	G	G	G	G	G	G	G	G	G	G	G	G	W
+W	F	F	F	F	F	F	F	F	G	G	G	G	G	W	-	-	-	-	-	-	W	W	W	G	G	G	G	G	W	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	W	G	G	G	G	G	G	G	G	G	G	G	G	G	W
+W	G	G	G	G	G	G	G	G	G	G	G	G	G	W	-	-	-	-	-	-	-	-	W	G	G	G	G	G	W	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	W	G	G	G	G	G	G	G	G	G	G	G	G	G	W
+W	G	G	G	G	G	G	G	G	G	G	G	G	G	W	-	-	-	-	-	-	-	-	W	G	G	G	G	G	W	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	W	G	G	G	G	G	G	G	G	G	G	G	G	G	W
+W	G	G	G	G	G	G	G	G	G	G	G	G	G	W	W	W	W	W	-	-	-	-	W	G	G	G	G	G	W	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	W	G	G	G	G	G	G	G	G	G	G	G	G	G	W
+W	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	W	W	W	W	W	W	W	W	G	G	G	G	G	W	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	PG	-	W	G	G	G	G	G	G	G	G	G	G	G	G	G	W
+W	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	W	ST	ST	ST	ST	ST	ST	ST	ST	ST	ST	ST	ST	-	-	-	-	-	-	-	-	-	-	W	G	G	G	G	G	G	G	G	G	G	G	G	G	W
+W	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	G	W	W	W	W	W	W	W	W	W	W	W	W	W	W	W	W	W	W	W	W	W	W	W	W	G	G	G	G	G	G	G	G	G	G	G	G	G	W
