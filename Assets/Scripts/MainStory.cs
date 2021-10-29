@@ -7,6 +7,6 @@ public class MainStory : MonoBehaviour
 {
     private void OnEnable()
     {
-        SceneManager.LoadScene("Scene1", LoadSceneMode.Single);
+        SceneManager.LoadScene("IntroMenu", LoadSceneMode.Single);
     }
 }
