@@ -79,6 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7b6a51944dd470eb3d89ad7c8e615a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TORCH_GOAL_COUNTER: 3
   torchCount: 0
   hearts:
   - {fileID: 0}

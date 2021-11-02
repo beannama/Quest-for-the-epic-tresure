@@ -10,6 +10,7 @@ TagManager:
   - Traps
   - Door
   - Platform
+  - Water
   layers:
   - Default
   - TransparentFX

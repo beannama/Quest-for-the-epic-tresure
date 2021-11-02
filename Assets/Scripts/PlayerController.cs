@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     private GameController gameController;
+    private PlayerSoundController playerSound;
     public GameObject attackObject;
     public PlayerStateList pState;
 
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+        playerSound = GetComponent<PlayerSoundController>();
         //TODO: CHECK THIS
         life = 3;
 
@@ -59,6 +61,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             if (attackTimer <= 0){
+                playerSound.MakeSound();
                 CreateAttack();
                 DestroyAttack();
                 attackTimer = attackRechargeTime;
