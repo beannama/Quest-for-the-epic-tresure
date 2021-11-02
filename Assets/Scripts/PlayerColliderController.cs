@@ -7,6 +7,7 @@ public class PlayerColliderController : MonoBehaviour
 
     public PlayerStateList pState;
     private PlayerController player;
+    private PlayerSoundController pSound;
     private Rigidbody2D rb2d;
 
     public GameObject playerObject;
@@ -15,6 +16,7 @@ public class PlayerColliderController : MonoBehaviour
     {
         player = GetComponent<PlayerController>();
         pState = GetComponent<PlayerStateList>();
+        pSound = GetComponent<PlayerSoundController>();
 
         playerObject = GameObject.Find("Player");
         rb2d = GetComponentInParent<Rigidbody2D>();
@@ -31,7 +33,7 @@ public class PlayerColliderController : MonoBehaviour
         if (col.gameObject.CompareTag("Heart"))
         {
             player.GainLife();
-            Destroy(col.gameObject);
+            Destroy(col.gameObject); //Destroy the heart object 
         }
     }
 

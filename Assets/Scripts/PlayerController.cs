@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     private GameController gameController;
-    public PlayerSoundController playerSound;
+    public PlayerSoundController pSound;
     public GameObject attackObject;
     public PlayerStateList pState;
 
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
-        playerSound = GetComponent<PlayerSoundController>();
+        pSound = GetComponent<PlayerSoundController>();
         //TODO: CHECK THIS
         life = 3;
 
@@ -61,7 +61,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             if (attackTimer <= 0){
-                playerSound.MakeSound();
                 CreateAttack();
                 DestroyAttack();
                 attackTimer = attackRechargeTime;
@@ -101,6 +100,9 @@ public class PlayerController : MonoBehaviour
 
     void CreateAttack()
     {
+
+        pSound.AttackSound();
+
         Vector2 parentPosition = new Vector2();
 
         Quaternion facing = new Quaternion();
@@ -139,16 +141,19 @@ public class PlayerController : MonoBehaviour
 
     public void ReceiveDamage()
     {
+        pSound.LoseLifeSound();
         life--;
         gameController.CheckLife(life);
     }
     public void GainLife()
     {
+        pSound.GainLifeSound();
         life++;
         gameController.CheckLife(life);
     }
     public void KillPlayer()
     {
+        pSound.DeathSound();
         life = 0;
         gameController.CheckLife(life);
     }
