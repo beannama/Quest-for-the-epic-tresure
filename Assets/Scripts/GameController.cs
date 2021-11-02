@@ -95,6 +95,19 @@ public class GameController : MonoBehaviour
     #endregion
 
     #region TorchManagment
+
+
+    public bool CheckIfRightTorch(GameObject torch)
+    {
+        bool returnedBool = false;
+
+        if(torches[torchCount].name == torch.name)
+        {
+            returnedBool = true;
+        }
+
+        return returnedBool;
+    }
     public int ReturnNumberTorch(GameObject torch)
     {
         int torchNumber = 0;
@@ -108,11 +121,22 @@ public class GameController : MonoBehaviour
         }
         return torchNumber;
     }
+
+    public void TurnOffAllTorches()
+    {
+        for (int i = 0; i < torches.Count; i++)
+        {
+            torches[i].GetComponent<TorchController>().ExtinguishTorch();
+        }
+    }
+    public void ResetTorchCount()
+    {
+        torchCount = 0;
+    }
     public void IncreaseTorchCount()
     {
         torchCount++;
     }
-
     public void DecreaseTorchCount()
     {
         torchCount--;

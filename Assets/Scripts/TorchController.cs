@@ -12,6 +12,8 @@ public class TorchController : MonoBehaviour
 
     private SpriteRenderer spriteR;
     private GameObject EventSystem;
+    private GameController gameController;
+
     public Sprite torchOn;
     public Sprite torchOff;
     private StateEnum torchState;
@@ -21,6 +23,7 @@ public class TorchController : MonoBehaviour
     {
         spriteR = gameObject.GetComponent<SpriteRenderer>();
         EventSystem = GameObject.FindWithTag("GameController");
+        gameController = EventSystem.GetComponent<GameController>();
         torchState = StateEnum.Off;
     }
 
@@ -36,29 +39,39 @@ public class TorchController : MonoBehaviour
         if (col.gameObject.CompareTag("Attack"))
         {
             int torch_num = EventSystem.GetComponent<GameController>().ReturnNumberTorch(gameObject);
-            
+            Debug.Log(torch_num);
 
             if ((torchState == StateEnum.Off) && (attack_Controller.state == AttackController.State.Fire))
             {
-                LightTorch();
+                if (gameController.CheckIfRightTorch(gameObject))
+                {
+                    //LIGHT TORCH
+                    LightTorch();
+                }
+                else
+                {
+                    //PUNISH PLAYER
+                    gameController.TurnOffAllTorches();
+                    Debug.Log("Bad Torch");
+                }
             }
             else if ((torchState == StateEnum.On) && (attack_Controller.state == AttackController.State.Cold))
             {
                 ExtinguishTorch();
-            }
+            }            
         }
     }
 
-    private void LightTorch()
+    public void LightTorch()
     {
         spriteR.sprite = torchOn;
         torchState = StateEnum.On;
-        EventSystem.GetComponent<GameController>().IncreaseTorchCount();
+        gameController.IncreaseTorchCount();
     }
-    private void ExtinguishTorch()
+    public void ExtinguishTorch()
     {
         spriteR.sprite = torchOff;
         torchState = StateEnum.Off;
-        EventSystem.GetComponent<GameController>().DecreaseTorchCount();
+        gameController.DecreaseTorchCount();
     }
 }
