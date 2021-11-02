@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    public int TORCH_GOAL_COUNTER;
     public int torchCount;
     private bool complete;
     private GameObject door_Controller;
@@ -13,6 +14,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TORCH_GOAL_COUNTER = 3;
         torchCount = 0;
         complete = false;
         door_Controller = GameObject.FindWithTag("Door");
@@ -21,12 +23,12 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((torchCount == 3) && !complete)
+        if ((torchCount == TORCH_GOAL_COUNTER) && !complete)
         {
             door_Controller.GetComponent<DoorController>().ChangeState();
             complete = true;
         }
-        else if ((torchCount != 3) && complete)
+        else if ((torchCount != TORCH_GOAL_COUNTER) && complete)
         {
             door_Controller.GetComponent<DoorController>().ChangeState();
             complete = false;
