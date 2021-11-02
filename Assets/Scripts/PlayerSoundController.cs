@@ -4,25 +4,33 @@ using UnityEngine;
 
 public class PlayerSoundController : MonoBehaviour
 {
-    public AudioSource audioSrcFireball;
-    public AudioSource audioSrcIcebeam;
+    public AudioSource playerAudioSource;
+    [SerializeField]
+    public AudioClip audioSrcFireball;
+    public AudioClip audioSrcIcebeam;
     PlayerStateList playerState;
 
     private void Start()
     {
-        playerState = GetComponent<PlayerStateList>();
+        playerState = gameObject.GetComponent<PlayerStateList>();
+        playerAudioSource = gameObject.GetComponent<AudioSource>();
+
+        playerAudioSource.clip = audioSrcFireball;
     }
+
 
     public void MakeSound()
     {
         if (playerState.usingDragon)
         {
-            audioSrcFireball.Play();
+            playerAudioSource.clip = audioSrcFireball;
         }
         else
         {
-            audioSrcIcebeam.Play();
+            playerAudioSource.clip = audioSrcIcebeam;
+
         }
+        playerAudioSource.Play();
     }
 
 

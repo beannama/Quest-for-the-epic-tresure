@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     private GameController gameController;
-    private PlayerSoundController playerSound;
+    public PlayerSoundController playerSound;
     public GameObject attackObject;
     public PlayerStateList pState;
 
