@@ -12,6 +12,7 @@ TagManager:
   - Platform
   - Water
   - Heart
+  - Torch
   layers:
   - Default
   - TransparentFX

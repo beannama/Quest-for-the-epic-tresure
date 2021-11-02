@@ -185,6 +185,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7253354184277225293, guid: da33aae2b1b134e7fb9928d55fc9811c, type: 3}
   m_PrefabInstance: {fileID: 51995234}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &55385294 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4967028325627604262, guid: ede7ab6021ede4f6db27cab7571f0358, type: 3}
+  m_PrefabInstance: {fileID: 793208631}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &148372875
 GameObject:
   m_ObjectHideFlags: 0
@@ -2863,6 +2868,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &187907977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4967028325627604262, guid: ede7ab6021ede4f6db27cab7571f0358, type: 3}
+  m_PrefabInstance: {fileID: 995707467}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &287149390
 GameObject:
   m_ObjectHideFlags: 0
@@ -3908,6 +3918,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1135219024 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4967028325627604262, guid: ede7ab6021ede4f6db27cab7571f0358, type: 3}
+  m_PrefabInstance: {fileID: 915515634}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1148618132
 GameObject:
   m_ObjectHideFlags: 0
@@ -7959,6 +7974,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8921194326874255487, guid: c488b6f3d85ce0341bb320ae90af3433, type: 3}
+      propertyPath: torches.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8921194326874255487, guid: c488b6f3d85ce0341bb320ae90af3433, type: 3}
       propertyPath: hearts.Array.data[0]
       value: 
       objectReference: {fileID: 844093244}
@@ -7982,6 +8001,18 @@ PrefabInstance:
       propertyPath: hearts.Array.data[5]
       value: 
       objectReference: {fileID: 1887151361}
+    - target: {fileID: 8921194326874255487, guid: c488b6f3d85ce0341bb320ae90af3433, type: 3}
+      propertyPath: torches.Array.data[0]
+      value: 
+      objectReference: {fileID: 55385294}
+    - target: {fileID: 8921194326874255487, guid: c488b6f3d85ce0341bb320ae90af3433, type: 3}
+      propertyPath: torches.Array.data[1]
+      value: 
+      objectReference: {fileID: 1135219024}
+    - target: {fileID: 8921194326874255487, guid: c488b6f3d85ce0341bb320ae90af3433, type: 3}
+      propertyPath: torches.Array.data[2]
+      value: 
+      objectReference: {fileID: 187907977}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c488b6f3d85ce0341bb320ae90af3433, type: 3}
 --- !u!1001 &9144024537553987441
