@@ -43,10 +43,57 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            Destroy(hearts[hearts.Count - 1].gameObject);
-            hearts.RemoveAt(hearts.Count -1);
+            if(life > CheckActiveHearts())
+            {
+                AddHeart();
+            }
+            else if (life < CheckActiveHearts())
+            {
+                RemoveHeart();
+            }
         }
     }
+
+
+    private int CheckActiveHearts()
+    {
+        int count = 0;
+        for(int i = 0; i < hearts.Count; i++)
+        {
+            if (hearts[i].activeSelf)
+            {
+                count++;
+            }
+        }
+
+        return count;
+    }
+
+    public void AddHeart()
+    {
+        for(int i = 0; i < hearts.Count; i++)
+        {
+            if (!hearts[i].activeSelf)
+            {
+                hearts[i].SetActive(true);
+                break;
+            }
+        }
+
+    }
+    public void RemoveHeart()
+    {
+        for (int i = hearts.Count -1; i > 0; i--)
+        {
+            if (hearts[i].activeSelf)
+            {
+                hearts[i].SetActive(false);
+                break;
+            }
+        }
+
+    }
+
 
     public void IncreaseTorchCount()
     {

@@ -68,6 +68,16 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        //TODO: DAMAGE CHECKER
+        //if (Input.GetKeyDown(KeyCode.B))
+        //{
+        //    GainLife();
+        //}
+        //if (Input.GetKeyDown(KeyCode.V))
+        //{
+        //    ReceiveDamage();
+        //}
+
         changeChrTimer -= Time.deltaTime;
         attackTimer -= Time.deltaTime;
     }
@@ -132,7 +142,11 @@ public class PlayerController : MonoBehaviour
         life--;
         gameController.CheckLife(life);
     }
-
+    public void GainLife()
+    {
+        life++;
+        gameController.CheckLife(life);
+    }
     public void KillPlayer()
     {
         life = 0;
