@@ -11,6 +11,7 @@ TagManager:
   - Door
   - Platform
   - Water
+  - Heart
   layers:
   - Default
   - TransparentFX

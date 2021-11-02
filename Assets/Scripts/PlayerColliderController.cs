@@ -27,6 +27,12 @@ public class PlayerColliderController : MonoBehaviour
 
             pState.isGrounded = true;
         }
+
+        if (col.gameObject.CompareTag("Heart"))
+        {
+            player.GainLife();
+            Destroy(col.gameObject);
+        }
     }
 
     void OnCollisionStay2D(Collision2D col)
