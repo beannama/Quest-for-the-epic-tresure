@@ -120,7 +120,10 @@ public class PlayerMovement : MonoBehaviour
         {
             if (pState.isGrounded){
                 pState.jumping = true;
-                pState.doublejump = true;
+                if (pState.usingDragon)
+                {
+                    pState.doublejump = true;
+                }
             }
             else if(pState.doublejump){
                 pState.jumping = true;
