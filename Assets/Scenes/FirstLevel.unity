@@ -7542,6 +7542,10 @@ MonoBehaviour:
   playerAudioSource: {fileID: 1903305663}
   audioSrcFireball: {fileID: 8300000, guid: c7e748dd28e9ce6459bf6003bac4d815, type: 3}
   audioSrcIcebeam: {fileID: 8300000, guid: 1282d69083c1c194ebf5daa0d59301c6, type: 3}
+  audioSrcGainLife: {fileID: 8300000, guid: 6d14ba1df7b6e8d41826210027ad2f32, type: 3}
+  audioSrcLoseLife: {fileID: 8300000, guid: f0775e609e7b6444c897e75ee16651e2, type: 3}
+  audioSrcDeathDragon: {fileID: 8300000, guid: e6cf63e3405e86a4aadd9cb322e507f7, type: 3}
+  audioSrcDeathMage: {fileID: 8300000, guid: 2059b69454dd10d48bbbb8d5ae670ec6, type: 3}
 --- !u!82 &1903305663
 AudioSource:
   m_ObjectHideFlags: 0

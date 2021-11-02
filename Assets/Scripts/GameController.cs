@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour
 {
     public int TORCH_GOAL_COUNTER;
     public int torchCount;
+    public List<GameObject> torches;
+    
     private bool complete;
     private GameObject door_Controller;
     public List<GameObject> hearts;
@@ -14,7 +16,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TORCH_GOAL_COUNTER = 3;
+        TORCH_GOAL_COUNTER = torches.Count;
         torchCount = 0;
         complete = false;
         door_Controller = GameObject.FindWithTag("Door");
@@ -35,6 +37,7 @@ public class GameController : MonoBehaviour
         }
     }
 
+    #region Life Managment
     public void CheckLife(int life)
     {
         if (life == 0)
@@ -43,19 +46,17 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            if(life > CheckActiveHearts())
+            if(life > ReturnNumberActiveHearts())
             {
                 AddHeart();
             }
-            else if (life < CheckActiveHearts())
+            else if (life < ReturnNumberActiveHearts())
             {
                 RemoveHeart();
             }
         }
     }
-
-
-    private int CheckActiveHearts()
+    private int ReturnNumberActiveHearts()
     {
         int count = 0;
         for(int i = 0; i < hearts.Count; i++)
@@ -68,7 +69,6 @@ public class GameController : MonoBehaviour
 
         return count;
     }
-
     public void AddHeart()
     {
         for(int i = 0; i < hearts.Count; i++)
@@ -79,7 +79,6 @@ public class GameController : MonoBehaviour
                 break;
             }
         }
-
     }
     public void RemoveHeart()
     {
@@ -93,8 +92,22 @@ public class GameController : MonoBehaviour
         }
 
     }
+    #endregion
 
+    #region TorchManagment
+    public int ReturnNumberTorch(GameObject torch)
+    {
+        int torchNumber = 0;
 
+        for(int i = 0; i < torches.Count; i++)
+        {
+            if(torch.name == torches[i].name)
+            {
+                torchNumber = i;
+            }
+        }
+        return torchNumber;
+    }
     public void IncreaseTorchCount()
     {
         torchCount++;
@@ -104,4 +117,5 @@ public class GameController : MonoBehaviour
     {
         torchCount--;
     }
+    #endregion
 }

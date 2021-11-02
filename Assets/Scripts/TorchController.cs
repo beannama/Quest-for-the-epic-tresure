@@ -35,18 +35,30 @@ public class TorchController : MonoBehaviour
         AttackController attack_Controller = col.gameObject.GetComponent<AttackController>();
         if (col.gameObject.CompareTag("Attack"))
         {
+            int torch_num = EventSystem.GetComponent<GameController>().ReturnNumberTorch(gameObject);
+            
+
             if ((torchState == StateEnum.Off) && (attack_Controller.state == AttackController.State.Fire))
             {
-                spriteR.sprite = torchOn;
-                torchState = StateEnum.On;
-                EventSystem.GetComponent<GameController>().IncreaseTorchCount();
+                LightTorch();
             }
             else if ((torchState == StateEnum.On) && (attack_Controller.state == AttackController.State.Cold))
             {
-                spriteR.sprite = torchOff;
-                torchState = StateEnum.Off;
-                EventSystem.GetComponent<GameController>().DecreaseTorchCount();
+                ExtinguishTorch();
             }
         }
+    }
+
+    private void LightTorch()
+    {
+        spriteR.sprite = torchOn;
+        torchState = StateEnum.On;
+        EventSystem.GetComponent<GameController>().IncreaseTorchCount();
+    }
+    private void ExtinguishTorch()
+    {
+        spriteR.sprite = torchOff;
+        torchState = StateEnum.Off;
+        EventSystem.GetComponent<GameController>().DecreaseTorchCount();
     }
 }
