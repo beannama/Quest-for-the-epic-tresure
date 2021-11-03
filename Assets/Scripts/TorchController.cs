@@ -12,6 +12,9 @@ public class TorchController : MonoBehaviour
 
     private SpriteRenderer spriteR;
     private GameObject EventSystem;
+
+    //TODO: REMOVE THIS 2 DEPENDENCIES
+    private PlayerController pController; 
     private GameController gameController;
 
     public Sprite torchOn;
@@ -24,6 +27,10 @@ public class TorchController : MonoBehaviour
         spriteR = gameObject.GetComponent<SpriteRenderer>();
         EventSystem = GameObject.FindWithTag("GameController");
         gameController = EventSystem.GetComponent<GameController>();
+
+        pController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+
+
         torchState = StateEnum.Off;
     }
 
@@ -47,8 +54,9 @@ public class TorchController : MonoBehaviour
                 }
                 else
                 {
+                    //TODO: REMOVE THIS AND DO IT WITHOUT DEPENDENCIES
                     //PUNISH PLAYER
-                    gameController.RemoveHeart();
+                    pController.ReceiveDamage(); 
                     //TURN OFF TORCHES
                     gameController.TurnOffAllTorches();
                     Debug.Log("Bad Torch");
