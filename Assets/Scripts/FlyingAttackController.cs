@@ -24,6 +24,12 @@ public class FlyingAttackController : MonoBehaviour
         //Vector2 newPos = Vector2.MoveTowards(rb2d.position, obj, speed * Time.deltaTime);
         //rb2d.MovePosition(newPos);
     }
+
+    void OnCollisionEnter2D(Collision2D col){
+        if (col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("Land")){
+            Destroy(gameObject);
+        }
+    }
 }
 
             
