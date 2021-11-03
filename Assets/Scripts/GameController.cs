@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour
     private GameObject door_Controller;
     public List<GameObject> hearts;
 
+    public UIManager canvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,8 @@ public class GameController : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         door_Controller = GameObject.FindWithTag("Door");
+
+        canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<UIManager>();
     }
 
     // Update is called once per frame
@@ -45,7 +49,9 @@ public class GameController : MonoBehaviour
     {
         if (life == 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            // --------------------------- Game Over Panel ----------------------------------------
+            canvas.GameOverPanel();
         }
         else
         {

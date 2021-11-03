@@ -13,6 +13,7 @@ TagManager:
   - Water
   - Heart
   - Torch
+  - Canvas
   layers:
   - Default
   - TransparentFX

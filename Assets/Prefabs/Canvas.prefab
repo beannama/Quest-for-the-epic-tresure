@@ -1398,6 +1398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionsPanel: {fileID: 406586683}
+  gameOverPanel: {fileID: 5096158801135783612}
 --- !u!1 &2327750429353734591
 GameObject:
   m_ObjectHideFlags: 0

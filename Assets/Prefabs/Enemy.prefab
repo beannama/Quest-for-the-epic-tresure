@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2638626939947255792}
-  - component: {fileID: 8834721867125265222}
+  - component: {fileID: 2462331401108642433}
   - component: {fileID: 2173171043790570999}
   m_Layer: 0
   m_Name: Grounded
@@ -26,14 +26,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3601313138967825708}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.13, y: -1.45, z: 0.00042319298}
+  m_LocalPosition: {x: 0.13, y: -2.08, z: 0.00042319298}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 4391698210194943815}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &8834721867125265222
-CircleCollider2D:
+--- !u!70 &2462331401108642433
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -42,12 +42,12 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.41580474}
-  serializedVersion: 2
-  m_Radius: 0.084195256
+  m_Offset: {x: -0.06522578, y: -0.15654188}
+  m_Size: {x: 0.07385832, y: 0.68691623}
+  m_Direction: 0
 --- !u!114 &2173171043790570999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a403603e1c6cb624cae608028a93e1e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionRadius: 5
+  visionRadius: 6
   speed: 4
   isGrounded: 1
