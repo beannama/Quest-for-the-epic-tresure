@@ -139,7 +139,10 @@ public class GameController : MonoBehaviour
     }
     public void DecreaseTorchCount()
     {
-        torchCount--;
+        if (torchCount != 0){
+            torchCount--;
+        }
+        
     }
     #endregion
 }
