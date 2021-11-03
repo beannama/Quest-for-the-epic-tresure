@@ -139,8 +139,7 @@ public class GameController : MonoBehaviour
     }
     public void DecreaseTorchCount()
     {
-        if (torchCount != 0)
-        {
+        if (torchCount != 0){
             torchCount--;
         }
         
