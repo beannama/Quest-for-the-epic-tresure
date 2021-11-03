@@ -29,23 +29,6 @@ public class PlayerGroundedController : MonoBehaviour
 
             pState.isGrounded = true;
         }
-        if (col.gameObject.CompareTag("Traps") || col.gameObject.CompareTag("Water"))
-        {
-            player.KillPlayer();
-        }
-        Vector3 direction = col.gameObject.transform.position;
-        if (col.gameObject.CompareTag("Enemy"))
-        {
-            CheckAttack(direction, col);
-            player.ReceiveDamage();
-
-            rb2d.velocity = Vector2.zero;
-        }
-        if (col.gameObject.CompareTag("Heart"))
-        {
-            player.GainLife();
-            Destroy(col.gameObject); //Destroy the heart object 
-        }
     }
 
     void OnTriggerStay2D(Collider2D col)
