@@ -51,6 +51,8 @@ public class TorchController : MonoBehaviour
                 else
                 {
                     //PUNISH PLAYER
+                    gameController.RemoveHeart();
+                    //TURN OFF TORCHES
                     gameController.TurnOffAllTorches();
                     Debug.Log("Bad Torch");
                 }
