@@ -13,7 +13,6 @@ public class GroundedController : MonoBehaviour
 
 
     void OnTriggerStay2D(Collider2D col){
-        Debug.Log("si");
         if (col.gameObject.tag == "Land"){
             Enemy.isGrounded = true;
         }
@@ -24,7 +23,6 @@ public class GroundedController : MonoBehaviour
     }
 
     void OnTriggerExist2D(Collider2D col){
-        Debug.Log("no");
         if (col.gameObject.tag == "Ground"){
             Enemy.isGrounded = false;
         }
