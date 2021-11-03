@@ -6,6 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     public float visionRadius;
     public float speed;
+    public bool isGrounded = true;
 
     GameObject player;
 
@@ -20,7 +21,18 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        ChasePlayer();
+        if (isGrounded){
+            ChasePlayer();
+        }
+        else{
+            Vector3 target = initialPosition;
+            float fixedSpeed = speed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, target, fixedSpeed);
+        }
+
+        if (transform.position == initialPosition){
+            isGrounded = true;
+        }
     }
 
 

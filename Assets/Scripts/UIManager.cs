@@ -12,6 +12,11 @@ public class UIManager : MonoBehaviour
         optionsPanel.SetActive(true);
     }
 
+    public void Menu(){
+        Time.timeScale = 1;
+        SceneManager.LoadScene("IntroMenu");
+    }
+
     public void Exit(){
         Time.timeScale = 1;
         optionsPanel.SetActive(false);
