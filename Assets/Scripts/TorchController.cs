@@ -38,9 +38,6 @@ public class TorchController : MonoBehaviour
         AttackController attack_Controller = col.gameObject.GetComponent<AttackController>();
         if (col.gameObject.CompareTag("Attack"))
         {
-            int torch_num = EventSystem.GetComponent<GameController>().ReturnNumberTorch(gameObject);
-            Debug.Log(torch_num);
-
             if ((torchState == StateEnum.Off) && (attack_Controller.state == AttackController.State.Fire))
             {
                 if (gameController.CheckIfRightTorch(gameObject))

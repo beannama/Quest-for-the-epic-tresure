@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class DoorController : MonoBehaviour
 {
     public enum StateEnum
@@ -48,7 +48,7 @@ public class DoorController : MonoBehaviour
         {
             if (doorState == StateEnum.Open)
             {
-                Debug.Log("WIN!");
+                SceneManager.LoadScene("Lore_Third", LoadSceneMode.Single);
             }
         }
     }

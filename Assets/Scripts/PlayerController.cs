@@ -32,7 +32,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+
         pSound = GetComponent<PlayerSoundController>();
+
         //TODO: CHECK THIS
         life = 3;
 
@@ -67,15 +69,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //TODO: DAMAGE CHECKER
-        //if (Input.GetKeyDown(KeyCode.B))
-        //{
-        //    GainLife();
-        //}
-        //if (Input.GetKeyDown(KeyCode.V))
-        //{
-        //    ReceiveDamage();
-        //}
 
         changeChrTimer -= Time.deltaTime;
         attackTimer -= Time.deltaTime;

@@ -23,13 +23,25 @@ public class PlayerColliderController : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D col){
-        if(col.gameObject.CompareTag("Platform")){
+        if (col.gameObject.CompareTag("Platform"))
+        {
             rb2d.velocity = new Vector3(0f,0f,0f);
             player.transform.parent = col.transform;
 
             pState.isGrounded = true;
         }
+        if (col.gameObject.CompareTag("Traps") || col.gameObject.CompareTag("Water"))
+        {
+            player.KillPlayer();
+        }
+        Vector3 direction = col.gameObject.transform.position;
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            CheckAttack(direction, col);
+            player.ReceiveDamage();
 
+            rb2d.velocity = Vector2.zero;
+        }
         if (col.gameObject.CompareTag("Heart"))
         {
             player.GainLife();
@@ -44,28 +56,15 @@ public class PlayerColliderController : MonoBehaviour
             pState.isGrounded = true;
         }
 
-        if (col.gameObject.CompareTag("Traps"))
+        if (col.gameObject.CompareTag("Platform"))
         {
-            player.KillPlayer();
-        }
-
-        if(col.gameObject.CompareTag("Platform")){
             player.transform.parent = col.transform;
             pState.isGrounded = true;
-
         }
 
-        Vector3 direction = col.gameObject.transform.position;
-
-        if (col.gameObject.CompareTag("Enemy"))
-        {
-            CheckAttack(direction, col);
-            player.ReceiveDamage();
-
-            rb2d.velocity = Vector2.zero;
-        }
-
+        
     }
+
 
     void OnCollisionExit2D(Collision2D col)
     {
