@@ -5,8 +5,6 @@ using UnityEngine.Tilemaps;
 
 public class WaterController : MonoBehaviour
 {
-    public TileBase water;
-    public TileBase ice;
     private Tilemap tilemap;
     public float freezeTime;
     private float timer;
@@ -54,14 +52,12 @@ public class WaterController : MonoBehaviour
     private void Freeze()
     {
         transform.gameObject.tag = "Land";
-        tilemap.SwapTile(water, ice);
         tilemap.color = Color.white;
     }
     
     private void Unfreeze()
     {
         transform.gameObject.tag = "Water";
-        tilemap.SwapTile(ice, water);
         tilemap.color = blue;
     }
 }
