@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     public int TORCH_GOAL_COUNTER;
     public int torchCount;
     public List<GameObject> torches;
+    private GameObject player;
     
     private bool complete;
     private GameObject door_Controller;
@@ -19,6 +20,8 @@ public class GameController : MonoBehaviour
         TORCH_GOAL_COUNTER = torches.Count;
         torchCount = 0;
         complete = false;
+        player = GameObject.FindWithTag("Player");
+
         door_Controller = GameObject.FindWithTag("Door");
     }
 

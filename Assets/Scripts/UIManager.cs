@@ -14,7 +14,7 @@ public class UIManager : MonoBehaviour
 
     public void Exit(){
         Time.timeScale = 1;
-        optionsPanel.SetActive(false);
+        SceneManager.LoadScene("IntroMenu", LoadSceneMode.Single);
     }
 
     public void Restart(){
