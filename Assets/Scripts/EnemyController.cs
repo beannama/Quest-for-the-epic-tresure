@@ -17,12 +17,17 @@ public class EnemyController : MonoBehaviour
 
     public float Timer;
     public float stateRechargeTime = 1f;
+    private bool startTimer;
 
     public float spd;
+
+    Component movement;
 
     // Start is called before the first frame update
     void Start()
     {
+        movement = GetComponent<EnemyMovement>();
+        startTimer = false;
         spd = 50f;
         spriteR = gameObject.GetComponent<SpriteRenderer>();
     }
@@ -31,19 +36,23 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
 
-        if (Timer <= 0)
+        if (Timer <= 0 && startTimer)
         {
             ChangeState(StateEnum.Normal);
+            ((Behaviour)movement).enabled = true;
             Timer = stateRechargeTime;
         }
-        Timer -= Time.deltaTime;
+        if(startTimer) Timer -= Time.deltaTime;
     }
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         Vector3 direction = col.gameObject.transform.position;
 
         if (col.gameObject.CompareTag("Attack"))
         {
+            startTimer = true;
+            Timer = stateRechargeTime;
             CheckAttack(direction, col);
         }
     }
@@ -106,9 +115,7 @@ public class EnemyController : MonoBehaviour
         }
         else if (attack_Controller.state == AttackController.State.Cold)
         {
-
-            //Do
-            // TODO: STOP MOVEMENT FOR "X" SECS FOR THE ENEMY
+            ((Behaviour)movement).enabled = false;
             ChangeState(StateEnum.Frozen);
         }
 
