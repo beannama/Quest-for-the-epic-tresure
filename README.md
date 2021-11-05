@@ -2,20 +2,20 @@
 
 ## Version Beta
 
-- [ ] Que el jugador pueda realizar todas las capacidades completa.
-- [ ] Que los dos personajes sean completamente jugables con todas sus habilidades debidas.
-- [ ] Que el jugador pueda utilizar los hechizos en todos los elementos de puzzle planificados.
-- [ ] Que el jugador pueda interactuar con todos los enemigos distintos planificados.
-- [ ] Que el jugador sea castigado por fallar el puzzle de alguna manera clara.
-- [ ] Que el jugador pueda recolectar todos los posibles items (como corazones) que sean
+- [X] Que el jugador pueda realizar todas las capacidades completa.
+- [X] Que los dos personajes sean completamente jugables con todas sus habilidades debidas.
+- [X] Que el jugador pueda utilizar los hechizos en todos los elementos de puzzle planificados.
+- [X] Que el jugador pueda interactuar con todos los enemigos distintos planificados.
+- [X] Que el jugador sea castigado por fallar el puzzle de alguna manera clara.
+- [X] Que el jugador pueda recolectar todos los posibles items (como corazones) que sean
 planificados.
-- [ ] Que el juego tenga una forma de mostrar lore.
-- [ ] Que el enemigo grande sea cap´az de seguir al jugador de forma simple para estorbarlo
+- [X] Que el juego tenga una forma de mostrar lore.
+- [X] Que el enemigo grande sea cap´az de seguir al jugador de forma simple para estorbarlo
 un poco y con interacci´on completa.
-- [ ] Que el juego tenga los assets visuales/sonido m´as cerca de las finales que se piensa
+- [X] Que el juego tenga los assets visuales/sonido m´as cerca de las finales que se piensa
 utilizar.
-- [ ] Que el juego tenga un UI de reiniciar/ganar/perder el juego funcional.
-- [ ] El primer nivel real completado.
+- [X] Que el juego tenga un UI de reiniciar/ganar/perder el juego funcional.
+- [X] El primer nivel real completado.
 
 ## Version Alfa
 
