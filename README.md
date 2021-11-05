@@ -1,5 +1,16 @@
 # Quest for the Epic Treasure
 
+## Version Final
+
+- [ ] Completar m´ınimo 3 niveles (pueden crear m´as si lo desean).
+- [ ] Aumentar la variedad y complejidad de los obst´aculos en los niveles (tal vez variaciones de obst´aculos)
+- [ ] Aumentar e implementar la variedad de enemigos que piensan realizar.
+- [ ] Aumentar e implementar la variedad de elementos puzle que piensan realizar.
+- [ ] Agregar m´as efectos visuales/sonido para feedback.
+- [ ] Que todos los AI de enemigso utilize un tipo de Path-finding y/o Velocity Computation para tener un movimiento m´as fluido (en especial el enemigo invencible).
+- [ ] Que todos los AI de enemigso utilize un tipo de Decision Tree para realizar las
+distintas decisiones.
+
 ## Version Beta
 
 - [X] Que el jugador pueda realizar todas las capacidades completa.
