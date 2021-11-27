@@ -151,6 +151,7 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < torches.Count; i++)
         {
             torches[i].GetComponent<TorchController>().LightTorch();
+            torchCount = TORCH_GOAL_COUNTER;
         }
     }
     #endregion

@@ -7,6 +7,6 @@ public class SecondLvl : MonoBehaviour
 {
     private void OnEnable()
     {
-        //SceneManager.LoadScene("SecondLevel", LoadSceneMode.Single);    START SecondLevel
+        SceneManager.LoadScene("SecondLevel", LoadSceneMode.Single);
     }
 }
