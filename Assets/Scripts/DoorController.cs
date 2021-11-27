@@ -48,7 +48,7 @@ public class DoorController : MonoBehaviour
         {
             if (doorState == StateEnum.Open)
             {
-                SceneManager.LoadScene("Lore_Third", LoadSceneMode.Single);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
     }

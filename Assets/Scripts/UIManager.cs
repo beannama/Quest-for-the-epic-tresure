@@ -39,6 +39,6 @@ public class UIManager : MonoBehaviour
     public void NewGame(){
         Time.timeScale = 1;
         gameOverPanel.SetActive(false);
-        SceneManager.LoadScene("FirstLevel");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
