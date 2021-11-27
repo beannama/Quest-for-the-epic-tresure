@@ -106,6 +106,14 @@ public class GameController : MonoBehaviour
             {
                 cheat = cheat.Insert(cheat.Length, "D");
             }
+            else if (Input.GetKeyDown(KeyCode.A))
+            {
+                cheat = cheat.Insert(cheat.Length, "A");
+            }
+            else if (Input.GetKeyDown(KeyCode.R))
+            {
+                cheat = cheat.Insert(cheat.Length, "R");
+            }
 
 
         }
@@ -139,6 +147,12 @@ public class GameController : MonoBehaviour
             Debug.Log("killing all enemies");
 
             KillAllEnemies();
+        }
+        if (cheatcode == "ADDHEART")
+        {
+            Debug.Log("1up");
+
+            AddHeart();
         }
     }
     public void KillAllEnemies()
