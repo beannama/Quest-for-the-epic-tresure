@@ -14,8 +14,12 @@ public class GameController : MonoBehaviour
     private GameObject door_Controller;
     public List<GameObject> hearts;
 
+    public GameObject enemies;
+
     public UIManager canvas;
 
+
+    string cheat = "";
     // Start is called before the first frame update
     void Start()
     {
@@ -26,12 +30,16 @@ public class GameController : MonoBehaviour
 
         door_Controller = GameObject.FindWithTag("Door");
 
+        enemies = GameObject.Find("Enemies");
         canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<UIManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        CheckCheat(cheat);
+
+
         if ((torchCount == TORCH_GOAL_COUNTER) && !complete)
         {
             door_Controller.GetComponent<DoorController>().ChangeState();
@@ -42,7 +50,110 @@ public class GameController : MonoBehaviour
             door_Controller.GetComponent<DoorController>().ChangeState();
             complete = false;
         }
+
+
+        // CHEAT MANAGMENT
+        
+
+        if (Input.GetKey(KeyCode.LeftShift)) // EL USUARIO TIENE QUE ESCRIBIR LIGHTSON
+        {
+
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                cheat = cheat.Insert(cheat.Length, "L");
+            }
+            else if (Input.GetKeyDown(KeyCode.I))
+            {
+                cheat = cheat.Insert(cheat.Length, "I");
+            }
+            else if (Input.GetKeyDown(KeyCode.G))
+            {
+                cheat = cheat.Insert(cheat.Length, "G");
+            }
+            else if (Input.GetKeyDown(KeyCode.H))
+            {
+                cheat = cheat.Insert(cheat.Length, "H");
+            }
+            else if (Input.GetKeyDown(KeyCode.T))
+            {
+                cheat = cheat.Insert(cheat.Length, "T");
+            }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                cheat = cheat.Insert(cheat.Length, "S");
+            }
+            else if (Input.GetKeyDown(KeyCode.O))
+            {
+                cheat = cheat.Insert(cheat.Length, "O");
+            }
+            else if (Input.GetKeyDown(KeyCode.N))
+            {
+                cheat = cheat.Insert(cheat.Length, "N");
+            }
+            else if (Input.GetKeyDown(KeyCode.F))
+            {
+                cheat = cheat.Insert(cheat.Length, "F");
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                cheat = cheat.Insert(cheat.Length, "E");
+            }
+            else if (Input.GetKeyDown(KeyCode.C))
+            {
+                cheat = cheat.Insert(cheat.Length, "C");
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                cheat = cheat.Insert(cheat.Length, "D");
+            }
+
+
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            Debug.Log(cheat);
+
+            cheat = "";
+        }
     }
+
+    #region CheatCodes
+
+
+    public void CheckCheat(string cheatcode)
+    {
+        if(cheatcode == "LIGHTSON")
+        {
+            Debug.Log("Turning on torches");
+            TurnOnAllTorches();
+        }
+        if (cheatcode == "LIGHTSOFF")
+        {
+            Debug.Log("Turning off torches");
+
+            TurnOffAllTorches();
+        }
+        if (cheatcode == "GENOCIDIO")
+        {
+            Debug.Log("killing all enemies");
+
+            KillAllEnemies();
+        }
+    }
+    public void KillAllEnemies()
+    {
+        enemies.SetActive(false);
+    }
+
+    public void TurnOnAllTorches()
+    {
+        for (int i = 0; i < torches.Count; i++)
+        {
+            torches[i].GetComponent<TorchController>().LightTorch();
+        }
+    }
+    #endregion
 
     #region Life Managment
     public void CheckLife(int life)
