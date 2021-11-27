@@ -855,10 +855,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 63.078150649617115
+    m_Start: 59.28333333333333
     m_ClipIn: 0
     m_Asset: {fileID: -6595750503950769858}
-    m_Duration: 1.415593877403687
+    m_Duration: 4.96645561009646
     m_TimeScale: 1
     m_ParentTrack: {fileID: -1870406092050896731}
     m_EaseInDuration: 0
