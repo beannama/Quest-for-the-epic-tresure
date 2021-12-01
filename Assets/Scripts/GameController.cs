@@ -53,7 +53,10 @@ public class GameController : MonoBehaviour
 
 
         // CHEAT MANAGMENT
-        
+        if (Input.GetKey("escape"))
+        {
+            Application.Quit();
+        }
 
         if (Input.GetKey(KeyCode.LeftShift)) // EL USUARIO TIENE QUE ESCRIBIR LIGHTSON
         {
