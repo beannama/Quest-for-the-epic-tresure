@@ -558,7 +558,7 @@ PrefabInstance:
     - target: {fileID: 1773609158746140933, guid: 63d3d0e97047a164286f3df2c21b95a5, type: 3}
       propertyPath: m_Text
       value: "Luego de superar la su primer desaf\xEDo, nuestros heroes se adentraron
-        al bosque."
+        en el bosque."
       objectReference: {fileID: 0}
     - target: {fileID: 1773609158746140935, guid: 63d3d0e97047a164286f3df2c21b95a5, type: 3}
       propertyPath: m_Name
@@ -669,8 +669,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1773609158746140933, guid: 63d3d0e97047a164286f3df2c21b95a5, type: 3}
       propertyPath: m_Text
-      value: El frio invierno cae en forma de nieve sobre el bosque, dejando todo
-        blanco a su paso.
+      value: "El fr\xEDo invierno cae en forma de nieve sobre el bosque, dejando
+        todo blanco a su paso."
       objectReference: {fileID: 0}
     - target: {fileID: 1773609158746140935, guid: 63d3d0e97047a164286f3df2c21b95a5, type: 3}
       propertyPath: m_Name

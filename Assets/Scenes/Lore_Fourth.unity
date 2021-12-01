@@ -174,8 +174,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "As\xED nuestros aventureros se adentraron dentro de la cueva, sin saber
-    lo que vendr\xEDa m\xE1s adelante..."
+  m_Text: "As\xED nuestros aventureros se adentraron en la cueva, sin saber lo que
+    vendr\xEDa m\xE1s adelante..."
 --- !u!222 &17222788
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -255,7 +255,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\"\xA1Esta es nuestra oportunidad de avanzar!\nPuedo oler las riquezas,
-    esos tesoros \n\xA1SERAN MIOS!\""
+    esos tesoros \n\xA1SER\xC1N MIOS!\""
 --- !u!222 &176611240
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -494,7 +494,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\"\xA1 BYVERN CUIDADO!\""
+  m_Text: "\"\xA1BYVERN  CUIDADO!\""
 --- !u!222 &625144839
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1210,7 +1210,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\"\xA1ES LA CUEVA DE LA LEYENDA!\nPuedo sentir la magia por las murallas,
-    el aire cada roca contiene un poco de ella\"\n"
+    el aire cada roca contiene un poco de ella\""
 --- !u!222 &2101809740
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1315,7 +1315,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Luego de superar sus pruebas, nuestros heroes siguieron avanzando su camino.
+  m_Text: "Luego de superar sus pruebas, nuestros h\xE9roes siguieron avanzando su
+    camino."
 --- !u!114 &2505283336837287656
 MonoBehaviour:
   m_ObjectHideFlags: 0

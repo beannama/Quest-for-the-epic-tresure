@@ -1365,8 +1365,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1773609158746140933, guid: 63d3d0e97047a164286f3df2c21b95a5, type: 3}
       propertyPath: m_Text
-      value: "Nuestros aventureros se adentraban cada vez m\xE1s dentro de la cueva.
-        Hasta que en un momento"
+      value: "Nuestros aventureros se adentraban cada vez m\xE1s dentro a la cueva.
+        Hasta que en un momento..."
       objectReference: {fileID: 0}
     - target: {fileID: 1773609158746140935, guid: 63d3d0e97047a164286f3df2c21b95a5, type: 3}
       propertyPath: m_Name
@@ -1868,7 +1868,7 @@ PrefabInstance:
       value: 'Avanzando por el terreno dificultoso, ellos finalmente encontraron
         el altar donde se encontraban las riquezas.
 
-        Sin embargo'
+        Sin embargo...'
       objectReference: {fileID: 0}
     - target: {fileID: 1773609158746140935, guid: 63d3d0e97047a164286f3df2c21b95a5, type: 3}
       propertyPath: m_Name
@@ -2021,8 +2021,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1773609158746140933, guid: 63d3d0e97047a164286f3df2c21b95a5, type: 3}
       propertyPath: m_Text
-      value: "Nuestros herores pudieron encontrar donde un pasadizo estrecho donde
-        podr\xEDan avanzar.\nDecidieron adentrarse en \xE9l"
+      value: "Nuestros h\xE9ores encontraron un pasadizo estrecho donde podr\xEDan
+        avanzar.\nDecidieron adentrarse en \xE9l."
       objectReference: {fileID: 0}
     - target: {fileID: 1773609158746140935, guid: 63d3d0e97047a164286f3df2c21b95a5, type: 3}
       propertyPath: m_Name
